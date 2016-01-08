@@ -1,0 +1,3 @@
+hangman_homepage:
+    type: rest
+    resource: hangman.controller.game

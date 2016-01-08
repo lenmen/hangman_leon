@@ -1,0 +1,15 @@
+services:
+    hangman.controller.game:
+        class: HangmanBundle\Controller\DefaultController
+        arguments: ["@broadway.command_handling.command_bus", "@broadway.uuid.generator", "@form.factory", "@router", "@sim.read_model.repository.game"]
+
+#    sim.read_model.repository.game:
+#        class: Doctrine\ORM\EntityRepository
+#        factory_service: doctrine.orm.entity_manager
+#        factory_method: getRepository
+#        arguments:
+#          - 'HangmanBundle:Game\ReadModel\GameStarted'
+
+    sim.read_model.repository.game:
+        class: HangmanBundle\Game\ReadModel\Doctrine\DoctrineRepository
+        arguments: [@doctrine.orm.entity_manager, "HangmanApplication:Game\ReadModel\GameStarted"]
