@@ -87,15 +87,21 @@ class DefaultController extends FOSRestController
     public function postGameAction(Request $request)
     {
         $uuid = $this->uuidGenerator->generate();
-        $gameStartCommand = new GameStartCommand($uuid, "hup");
+        $gameRequest = $request->request->get("game");
+        $gameStartCommand = new GameStartCommand($uuid, $gameRequest["word"]);
         $form = $this->formFactory->create(new GameStartType(), $gameStartCommand);
-        $this->handleForm($request, $form, $uuid, $gameStartCommand);
-}
+            
+        //return var_dump($gameStartCommand->getWord());
+        $handle = $this->handleForm($request, $form, $uuid, $gameStartCommand);
+
+        //return json_encode($request->request->get("word"));
+        return var_dump($handle);
+    }
 
     private function handleForm(Request $request, Form $form, $id, $command)
     {
         $form->submit($request);
-
+        
         if ($form->isValid()) {
             $this->handleCommand($command);
 
@@ -107,7 +113,9 @@ class DefaultController extends FOSRestController
                 Codes::HTTP_CREATED
             );
         }
-
+        
+        //var_dump($request);
+        
         return $form;
     }
 

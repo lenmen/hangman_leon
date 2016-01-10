@@ -42,4 +42,8 @@ class GameStartCommand
     {
         return $this->word;
     }
+
+    public function setWord($word) {
+        $this->word = $word;
+    }
 }
