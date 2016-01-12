@@ -4,8 +4,9 @@ namespace HangmanBundle\Game\ReadModel\Doctrine;
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\ReadModel\RepositoryInterface;
 use Doctrine\ORM\EntityManager;
+use Simgroep\EventSourcing\EventSourcingBundle\ReadModel\ClearableRepositoryInterface;
 
-class DoctrineRepository implements RepositoryInterface
+class DoctrineRepository implements ClearableRepositoryInterface
 {
     /**
      * @var EntityManager
@@ -25,6 +26,14 @@ class DoctrineRepository implements RepositoryInterface
     {
         $this->entityManager    = $entityManager;
         $this->entityRepository = $entityManager->getRepository($entityNamespace);
+    }
+
+    /**
+     * @param $entityClass
+     */
+    public function switchRepo($entityClass)
+    {
+        $this->entityRepository = $this->entityManager->getRepository($entityClass);
     }
 
     /**
@@ -57,7 +66,8 @@ class DoctrineRepository implements RepositoryInterface
      */
     public function findAll()
     {
-        return $this->entityRepository->findAll();
+        return $this->entityRepository->findAll
+();
     }
 
     /**
@@ -71,5 +81,26 @@ class DoctrineRepository implements RepositoryInterface
 
         $this->entityManager->remove($readModel);
         $this->entityManager->flush();
+    }
+
+    /**
+     * @param ReadModelInterface $readModel
+     */
+    private function removeReadModel(ReadModelInterface $readModel)
+    {
+        $this->entityManager->remove($readModel);
+        $this->entityManager->flush();
+    }
+
+    /**
+     * Remove all readModels
+     */
+    public function removeAll()
+    {
+        $readModels = $this->findAll();
+
+        foreach ($readModels as $readModel) {
+            $this->removeReadModel($readModel);
+        }
     }
 }

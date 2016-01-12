@@ -1,0 +1,44 @@
+services:
+      hangman.controller.command_handler:
+          class: HangmanBundle\Game\Application\GameCommandHandler
+          arguments: [@hangman.repository.game]
+          tags:
+              - { name: command_handler }
+
+      hangman.repository.game:
+          class: HangmanBundle\Game\Domain\Game\GameRepository
+          arguments:
+              - @broadway.event_store
+              - @broadway.event_handling.event_bus
+              - [ @broadway.metadata_enriching_event_stream_decorator ]
+
+      hangman.read_model_repository:
+          class: HangmanBundle\Game\ReadModel\Doctrine\DoctrineRepository
+          arguments:
+            - @doctrine.orm.entity_manager
+            - "HangmanBundle\Game\ReadModel\GameStarted"
+
+      hangman.read_model.projector.game_started:
+          class: HangmanBundle\Game\ReadModel\GameStartedProjector
+          arguments:
+            - @hangman.read_model_repository
+          tags:
+            - { name: broadway.domain.event_listener }
+            - { name: projector.replayable }
+
+      hangman.read_model.projector.letter_chosen:
+          class: HangmanBundle\Game\ReadModel\LetterChosenProjector
+          arguments:
+            - @hangman.read_model_repository
+          tags:
+            - { name: broadway.domain.event_listener }
+            - { name: projector.replayable }
+
+      hangman.read_model.projector.game_ended:
+          class: HangmanBundle\Game\ReadModel\GameEndedProjector
+          arguments:
+            - @hangman.read_model_repository
+          tags:
+            - { name: broadway.domain.event_listener }
+            - { name: projector.replayable }
+

@@ -19,7 +19,7 @@ class GameRepository extends EventSourcingRepository
         parent::__construct(
             $eventStore,
             $eventBus,
-            '\HangmanBundle\Game\Domain\Game',
+            '\HangmanBundle\Game\Domain\Game\Game',
             new PublicConstructorAggregateFactory(),
             $eventStreamDecorators
         );

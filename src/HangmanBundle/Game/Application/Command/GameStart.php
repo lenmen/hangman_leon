@@ -4,7 +4,7 @@
 namespace HangmanBundle\Game\Application\Command;
 
 
-class GameStartCommand
+class GameStart
 {
     /**
      * @var string

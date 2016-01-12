@@ -12,8 +12,11 @@ use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View;
 
+use HangmanBundle\Form\ChooseLetterType;
 use HangmanBundle\Form\GameStartType;
-use HangmanBundle\Game\Application\Command\GameStartCommand;
+use HangmanBundle\Game\Application\Command\ChooseLetter;
+use HangmanBundle\Game\Application\Command\GameStart;
+use HangmanBundle\HangmanBundle;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
@@ -78,26 +81,74 @@ class DefaultController extends FOSRestController
         return $this->render('HangmanBundle:Default:index.html.twig');
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return array
+     */
     public function getGameAction(Request $request, $id)
     {
-        //get game
-        return "hello game";
+        // Get the game
+        $game = $this->readModelRepository->find($id);
+
+        if (!$game) {
+            throw $this->createNotFoundException("Game not found");
+        }
+
+        //return json_encode([$game]);
+
+        return [
+            "uuid" => $game->getId(),
+            "word" => $game->getWord()
+        ];
     }
 
+    public function getWonGamesAction(Request $request, $id)
+    {
+        $this->readModelRepository->``
+        $game = $this->readModelRepository->find($id);
+    }
+
+    /**
+     * @param Request $request
+     * @return View|Form
+     */
     public function postGameAction(Request $request)
     {
         $uuid = $this->uuidGenerator->generate();
         $gameRequest = $request->request->get("game");
-        $gameStartCommand = new GameStartCommand($uuid, $gameRequest["word"]);
+
+        $gameStartCommand = new GameStart($uuid, $gameRequest["word"]);
         $form = $this->formFactory->create(new GameStartType(), $gameStartCommand);
             
         //return var_dump($gameStartCommand->getWord());
-        $handle = $this->handleForm($request, $form, $uuid, $gameStartCommand);
-
-        //return json_encode($request->request->get("word"));
-        return var_dump($handle);
+       return $this->handleForm($request, $form, $uuid, $gameStartCommand);
     }
 
+    /**
+     * @param Request $request
+     * @return View|Form
+     */
+    public function postLetterAction(Request $request)
+    {
+        // get the values of the request
+        $gameRequest = $request->request->get("letter");
+        $gameId = $gameRequest["gameId"];
+
+        $chooseLetterCommand = new ChooseLetter($gameId, $gameRequest["letter"]);
+        $form = $this->formFactory->create(new ChooseLetterType(), $chooseLetterCommand);
+
+        return $this->handleForm($request, $form, $gameId, $chooseLetterCommand);
+    }
+
+    /**
+     * @param Request $request
+     * @param Form $form
+     * @param string $id
+     * @param HangmanBundle\Game\Application\Command $command
+     * @return View|Form
+     * @throws \Exception
+     */
     private function handleForm(Request $request, Form $form, $id, $command)
     {
         $form->submit($request);
@@ -114,8 +165,6 @@ class DefaultController extends FOSRestController
             );
         }
         
-        //var_dump($request);
-        
         return $form;
     }
 
@@ -127,7 +176,7 @@ class DefaultController extends FOSRestController
         try {
             $this->commandBus->dispatch($command);
         } catch(\Exception $e) {
-            throw new \Exception("Municipality config could not be found or created");
+            throw new \Exception("Game could not be found or created");
         }
     }
 }
