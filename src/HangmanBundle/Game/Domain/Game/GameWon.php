@@ -19,7 +19,7 @@ class GameWon extends GameEvent
     /**
      * GameLost constructor.
      * @param string $gameId
-     * @param Time $time
+     * @param \DateTime $time
      */
     public function __construct($gameId, $time)
     {
@@ -29,7 +29,7 @@ class GameWon extends GameEvent
     }
 
     /**
-     * @return Time
+     * @return \DateTime
      */
     public function getExpandedTimeOnGame()
     {

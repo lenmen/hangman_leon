@@ -109,4 +109,3 @@ class GameEnd
         return $this->timeExpanned;
     }
 }
-

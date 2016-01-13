@@ -14,14 +14,14 @@ use Symfony\Component\Validator\Constraints\Time;
 class GameLost extends GameEvent
 {
     /**
-     * @var Time
+     * @var \DateTime
      */
     private $expandedTimeOnGame;
 
     /**
      * GameLost constructor.
      * @param string $gameId
-     * @param Time $time
+     * @param \DateTime $time
      */
     public function __construct($gameId, $time)
     {
@@ -31,7 +31,7 @@ class GameLost extends GameEvent
     }
 
     /**
-     * @return Time
+     * @return \DateTime
      */
     public function getExpandedTimeOnGame()
     {

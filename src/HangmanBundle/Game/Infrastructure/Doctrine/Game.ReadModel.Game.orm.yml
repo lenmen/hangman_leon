@@ -1,0 +1,33 @@
+HangmanBundle\Game\ReadModel\Game:
+    type: entity
+    table: game
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id
+            generator:
+                strategy: IDENTITY
+        gameId:
+            type: string
+            length: 50
+            nullable: false
+        word:
+            type: string
+            length: 50
+            nullable: false
+    OneToOne:
+        gameEnd:
+            targetEntity: HangmanBundle\Game\ReadModel\GameEnd
+            JoinColumn:
+                name: gameId
+                referencedColumnName: gameId
+    OneToMany:
+        lettersChosen:
+            targetEntity: HangmanBundle\Game\ReadModel\LetterChosen
+            JoinColumn:
+                name: gameId
+                referencedColumnName: gameId
+    lifecycleCallbacks: {}

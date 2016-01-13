@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new \Spray\SerializerBundle\SpraySerializerBundle(),
             new \FOS\RestBundle\FOSRestBundle(),
             new AppBundle\AppBundle(),
-
+            new Test\Bundle\TestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
@@ -37,6 +37,7 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        //$loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
 }

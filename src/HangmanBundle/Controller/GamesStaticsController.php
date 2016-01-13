@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: lennard
- * Date: 12-1-16
- * Time: 10:45
+ * Date: 13-1-16
+ * Time: 11:04
  */
 
 namespace HangmanBundle\Controller;
@@ -26,8 +26,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
-
-class LettersController extends FOSRestController
+class GamesStaticsController extends FOSRestController
 {
     /**
      * @var CommandBusInterface
@@ -72,11 +71,5 @@ class LettersController extends FOSRestController
         $this->uuidGenerator       = $uuidGenerator;
         $this->formFactory         = $formFactory;
         $this->router              = $router;
-        $this->readModelRepository = $readModelRepository;
-    }
-
-    public function getLettersAction()
-    {
-
-    }
+        $t
 }

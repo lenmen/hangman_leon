@@ -1,0 +1,31 @@
+HangmanBundle\Game\ReadModel\GameStatics:
+  type: entity
+  table: gamesstatics
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: id
+      generator:
+          strategy: IDENTITY
+    gameId:
+      type: string
+      length: 50
+      nullable: false
+    LetterWrongGuessed:
+      type: string
+      length: 255
+      nullable: false
+    LetterCorrectlyGuessed:
+      type: string
+      length: 255
+      nullable: false;
+    GameStatus:
+      type: string
+      length: 50
+      nullable: false;
+    ExpanededTimeOnGame:
+      type: datetime
+      nullable: false;

@@ -1,3 +1,7 @@
 hangman_homepage:
     type: rest
     resource: hangman.controller.game
+
+#hangman.ingame:
+#    type: rest
+#    resource: hangman.controller.letters

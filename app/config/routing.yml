@@ -1,3 +1,7 @@
+test:
+    resource: "@TestBundle/Resources/config/routing.xml"
+    prefix:   /
+
 hangman:
     resource: "@HangmanBundle/Resources/config/routing.yml"
     prefix:   /

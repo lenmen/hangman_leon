@@ -8,7 +8,6 @@ use Broadway\ReadModel\RepositoryInterface;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations;
-use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View;
 
@@ -16,7 +15,6 @@ use HangmanBundle\Form\ChooseLetterType;
 use HangmanBundle\Form\GameStartType;
 use HangmanBundle\Game\Application\Command\ChooseLetter;
 use HangmanBundle\Game\Application\Command\GameStart;
-use HangmanBundle\HangmanBundle;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
@@ -51,29 +49,21 @@ class DefaultController extends FOSRestController
     private $router;
 
     /**
-     * @var RepositoryInterface
-     */
-    private $readModelRepository;
-
-    /**
      * @param CommandBusInterface    $commandBus
      * @param UuidGeneratorInterface $uuidGenerator
      * @param FormFactory            $formFactory
      * @param Router                 $router
-     * @param RepositoryInterface    $readModelRepository
      */
     public function __construct(
         CommandBusInterface $commandBus,
         UuidGeneratorInterface $uuidGenerator,
         FormFactory $formFactory,
-        Router $router,
-        RepositoryInterface $readModelRepository
+        Router $router
     ) {
         $this->commandBus          = $commandBus;
         $this->uuidGenerator       = $uuidGenerator;
         $this->formFactory         = $formFactory;
         $this->router              = $router;
-        $this->readModelRepository = $readModelRepository;
     }
 
     public function indexAction()
@@ -89,23 +79,25 @@ class DefaultController extends FOSRestController
     public function getGameAction(Request $request, $id)
     {
         // Get the game
-        $game = $this->readModelRepository->find($id);
-
-        if (!$game) {
-            throw $this->createNotFoundException("Game not found");
-        }
-
-        //return json_encode([$game]);
-
-        return [
-            "uuid" => $game->getId(),
-            "word" => $game->getWord()
-        ];
+        $readModelRepository = $this->get("hangman.read_models.picker")->getReadModelRepository('HangmanBundle\Game\ReadModel\GameStatus');
+        var_dump($readModelRepository);
+//        $game = $this->readModelRepository->find($id);
+//
+//        if (!$game) {
+//            throw $this->createNotFoundException("Game not found");
+//        }
+//
+//        //return json_encode([$game]);
+//
+//        return [
+//            "uuid" => $game->getId(),
+//            "word" => $game->getWord()
+//        ];
     }
 
     public function getWonGamesAction(Request $request, $id)
     {
-        $this->readModelRepository->``
+        //$this->readModelRepository->``
         $game = $this->readModelRepository->find($id);
     }
 
@@ -154,6 +146,7 @@ class DefaultController extends FOSRestController
         $form->submit($request);
         
         if ($form->isValid()) {
+
             $this->handleCommand($command);
 
             return $this->redirectView(
