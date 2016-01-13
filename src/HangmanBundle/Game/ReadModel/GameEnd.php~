@@ -44,7 +44,7 @@ class GameEnd
      *
      * @return GameEnd
      */
-    public function setGameId($gameId)
+    public function setGameIdLetterSaver($gameId)
     {
         $this->gameId = $gameId;
 
@@ -107,5 +107,19 @@ class GameEnd
     public function getTimeExpanned()
     {
         return $this->timeExpanned;
+    }
+
+    /**
+     * Set gameId
+     *
+     * @param string $gameId
+     *
+     * @return GameEnd
+     */
+    public function setGameId($gameId)
+    {
+        $this->gameId = $gameId;
+
+        return $this;
     }
 }

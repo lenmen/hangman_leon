@@ -44,7 +44,6 @@ class GameStaticsProjector extends Projector
         $readModel->setGameId($event->getGameId());
         $readModel->setGameStatus("In progress");
         $readModel->setGameStartTime($event->getStartTime());
-        var_dump($readModel);
 
         $this->repository->save($readModel);
     }

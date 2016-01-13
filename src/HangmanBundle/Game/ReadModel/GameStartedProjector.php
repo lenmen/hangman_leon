@@ -34,7 +34,7 @@ class GameStartedProjector extends Projector
      */
     public function applyGameStarted(GameStartedEvent $event)
     {
-        $readModel = new GameStarted($event->getGameId(), $event->getWord());
+        $readModel = new GameStarted($event->getGameId(), $event->getWord(), $event->getStartTime());
         $this->repository->save($readModel);
     }
 }

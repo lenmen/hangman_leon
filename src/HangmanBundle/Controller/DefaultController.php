@@ -79,8 +79,8 @@ class DefaultController extends FOSRestController
     public function getGameAction(Request $request, $id)
     {
         // Get the game
-        $readModelRepository = $this->get("hangman.read_models.picker")->getReadModelRepository('HangmanBundle\Game\ReadModel\GameStatus');
-        var_dump($readModelRepository);
+//        $readModelRepository = $this->get("hangman.read_models.picker")->getReadModelRepository('HangmanBundle\Game\ReadModel\GameStatus');
+//        var_dump($readModelRepository);
 //        $game = $this->readModelRepository->find($id);
 //
 //        if (!$game) {
@@ -169,7 +169,7 @@ class DefaultController extends FOSRestController
         try {
             $this->commandBus->dispatch($command);
         } catch(\Exception $e) {
-            throw new \Exception("Game could not be found or created");
+            throw new \Exception($e->getMessage());
         }
     }
 }

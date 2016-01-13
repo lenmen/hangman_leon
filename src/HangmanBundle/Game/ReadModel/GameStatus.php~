@@ -1,0 +1,10 @@
+<?php
+
+
+namespace HangmanBundle\Game\ReadModel;
+
+
+class GameStatus
+{
+
+}

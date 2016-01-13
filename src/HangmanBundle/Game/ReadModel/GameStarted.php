@@ -30,13 +30,19 @@ class GameStarted implements ReadModelInterface
     private $word;
 
     /**
+     * @var \DateTime
+     */
+    private $gameStartTime;
+
+    /**
      * @param string $gameId
      * @param string $word
      */
-    public function __construct($gameId, $word)
+    public function __construct($gameId, $word, $gameStartTime)
     {
         $this->gameId = $gameId;
         $this->word   = $word;
+        $this->gameStartTime = $gameStartTime;
     }
 
     public function dbId()
@@ -90,5 +96,30 @@ class GameStarted implements ReadModelInterface
         $this->word = $word;
 
         return $this;
+    }
+
+
+    /**
+     * Set gameStartTime
+     *
+     * @param \DateTime $gameStartTime
+     *
+     * @return GameStarted
+     */
+    public function setGameStartTime($gameStartTime)
+    {
+        $this->gameStartTime = $gameStartTime;
+
+        return $this;
+    }
+
+    /**
+     * Get gameStartTime
+     *
+     * @return \DateTime
+     */
+    public function getGameStartTime()
+    {
+        return $this->gameStartTime;
     }
 }

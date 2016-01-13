@@ -1,9 +1,6 @@
 HangmanBundle\Game\ReadModel\GameStatics:
-  type: document
+  type: entity
   table: gamesstatics
-  embedded:
-    LetterSaver:
-      class: HangmanBundle\Models\LetterSaver
   fields:
     id:
       id: true
@@ -18,11 +15,11 @@ HangmanBundle\Game\ReadModel\GameStatics:
       length: 50
       nullable: false
     letterWrongGuessed:
-        type: Models\LetterSaver
+        type: string
         length: 255
         nullable: true
     letterCorrectlyGuessed:
-        type: Models\LetterSaver
+        type: string
         length: 255
         nullable: true
     gameStatus:

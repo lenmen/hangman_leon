@@ -18,4 +18,8 @@ HangmanBundle\Game\ReadModel\GameStarted:
             type: string
             length: 50
             nullable: false
+        gameStartTime:
+            type: datetime
+            length: 50
+            nullable: false
     lifecycleCallbacks: {}

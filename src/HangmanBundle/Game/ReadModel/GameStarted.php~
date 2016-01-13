@@ -91,4 +91,33 @@ class GameStarted implements ReadModelInterface
 
         return $this;
     }
+    /**
+     * @var \DateTime
+     */
+    private $gameStartTime;
+
+
+    /**
+     * Set gameStartTime
+     *
+     * @param \DateTime $gameStartTime
+     *
+     * @return GameStarted
+     */
+    public function setGameStartTime($gameStartTime)
+    {
+        $this->gameStartTime = $gameStartTime;
+
+        return $this;
+    }
+
+    /**
+     * Get gameStartTime
+     *
+     * @return \DateTime
+     */
+    public function getGameStartTime()
+    {
+        return $this->gameStartTime;
+    }
 }

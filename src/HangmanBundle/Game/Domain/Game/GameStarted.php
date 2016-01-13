@@ -18,7 +18,8 @@ class GameStarted extends GameEvent
 
     /**
      * @param string $gameId
-     * @param string $word
+     * @param $word
+     * @param $datetime
      */
     public function __construct($gameId, $word, $datetime) {
         parent::__construct($gameId);

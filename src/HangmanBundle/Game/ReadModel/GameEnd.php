@@ -108,4 +108,18 @@ class GameEnd
     {
         return $this->timeExpanned;
     }
+
+    /**
+     * Set gameId
+     *
+     * @param string $gameId
+     *
+     * @return GameEnd
+     */
+    public function setGameId($gameId)
+    {
+        $this->gameId = $gameId;
+
+        return $this;
+    }
 }
