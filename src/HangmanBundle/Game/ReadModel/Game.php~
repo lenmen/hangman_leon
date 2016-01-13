@@ -1,19 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lennard
- * Date: 12-1-16
- * Time: 11:02
- */
 
 namespace HangmanBundle\Game\ReadModel;
 
-
-use Broadway\ReadModel\ReadModelInterface;
-
-class Game 
+/**
+ * Game
+ */
+class Game
 {
-
     /**
      * @var integer
      */
@@ -86,63 +79,5 @@ class Game
     public function getWord()
     {
         return $this->word;
-    }
-    /**
-     * @var string
-     */
-    private $OneToOne;
-
-    /**
-     * @var string
-     */
-    private $OneToMany;
-
-
-    /**
-     * Set oneToOne
-     *
-     * @param string $oneToOne
-     *
-     * @return Game
-     */
-    public function setOneToOne($oneToOne)
-    {
-        $this->OneToOne = $oneToOne;
-
-        return $this;
-    }
-
-    /**
-     * Get oneToOne
-     *
-     * @return string
-     */
-    public function getOneToOne()
-    {
-        return $this->OneToOne;
-    }
-
-    /**
-     * Set oneToMany
-     *
-     * @param string $oneToMany
-     *
-     * @return Game
-     */
-    public function setOneToMany($oneToMany)
-    {
-        $this->OneToMany = $oneToMany;
-
-        return $this;
-    }
-
-    /**
-     * Get oneToMany
-     *
-     * @return string
-     */
-    public function getOneToMany()
-    {
-        return $this->OneToMany;
     }
 }

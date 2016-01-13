@@ -44,7 +44,7 @@ class GameEnd
      *
      * @return GameEnd
      */
-    public function setGameId($gameId)
+    public function setGameIdLetterSaver($gameId)
     {
         $this->gameId = $gameId;
 

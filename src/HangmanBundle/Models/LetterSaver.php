@@ -78,4 +78,9 @@ class LetterSaver
 
         return $letter;
     }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+    }
 }

@@ -1,6 +1,9 @@
 HangmanBundle\Game\ReadModel\GameStatics:
-  type: entity
+  type: document
   table: gamesstatics
+  embedded:
+    LetterSaver:
+      class: HangmanBundle\Models\LetterSaver
   fields:
     id:
       id: true
@@ -14,18 +17,24 @@ HangmanBundle\Game\ReadModel\GameStatics:
       type: string
       length: 50
       nullable: false
-    LetterWrongGuessed:
-      type: string
-      length: 255
-      nullable: false
-    LetterCorrectlyGuessed:
-      type: string
-      length: 255
-      nullable: false;
-    GameStatus:
+    letterWrongGuessed:
+        type: Models\LetterSaver
+        length: 255
+        nullable: true
+    letterCorrectlyGuessed:
+        type: Models\LetterSaver
+        length: 255
+        nullable: true
+    gameStatus:
       type: string
       length: 50
-      nullable: false;
-    ExpanededTimeOnGame:
+      nullable: false
+    expanededTimeOnGame:
       type: datetime
-      nullable: false;
+      nullable: true
+    gameStartTime:
+      type: datetime
+      nullable: true
+    gameEndTime:
+      type: datetime
+      nullable: true

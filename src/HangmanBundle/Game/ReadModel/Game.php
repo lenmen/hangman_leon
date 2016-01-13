@@ -81,4 +81,3 @@ class Game
         return $this->word;
     }
 }
-

@@ -6,16 +6,17 @@ services:
             - "@broadway.uuid.generator"
             - "@form.factory"
             - "@router"
-            - "hangman.read_model_repository"
+            - "@hangman.read_model_repository"
 
     hangman.controller.games_statics:
-        class: HangmanBundle\Controller\DefaultController
+        class: HangmanBundle\Controller\GamesStaticsController
         arguments:
             - "@broadway.command_handling.command_bus"
             - "@broadway.uuid.generator"
             - "@form.factory"
             - "@router"
-            - "hangman.read_model_repository"
+            - "@hangman.read_model_game_statics_repository"
+
 #    sim.read_model.repository.game:
 #        class: Doctrine\ORM\EntityRepository
 #        factory_service: doctrine.orm.entity_manager
@@ -27,18 +28,18 @@ services:
         class: HangmanBundle\Game\ReadModel\Doctrine\DoctrineRepository
         arguments: [@doctrine.orm.entity_manager, "HangmanApplication:Game\Domain\Config\GameStarted"]
 
-    hangman.controller.letters:
-      class: HangmanBundle\Controller\LettersController
-      arguments:
-        - "@broadway.command_handling.command_bus"
-        - "@broadway.uuid.generator"
-        - "@form.factory"
-        - "@router"
-        - "@hangman.read_model_choose_letters_repository"
-
-    hangman.read_models.picker:
-      class: HangmanBundle\Factories\ReadModelFactory
-      arguments:
-        - "@hangman.read_model_repository"
-        - "@hangman.read_model_choose_letters_repository"
-        - "@hangman.read_model_game_statics_repository"
+#    hangman.controller.letters:
+#      class: HangmanBundle\Controller\LettersController
+#      arguments:
+#        - "@broadway.command_handling.command_bus"
+#        - "@broadway.uuid.generator"
+#        - "@form.factory"
+#        - "@router"
+#        - "@hangman.read_model_choose_letters_repository"
+#
+#    hangman.read_models.picker:
+#      class: HangmanBundle\Factories\ReadModelFactory
+#      arguments:
+#        - "@hangman.read_model_repository"
+#        - "@hangman.read_model_choose_letters_repository"
+#        - "@hangman.read_model_game_statics_repository"

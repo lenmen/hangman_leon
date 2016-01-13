@@ -127,8 +127,6 @@ class Game extends EventSourcedAggregateRoot
      */
     private function correctlyGuessedLetters($gameId, $outputLetters)
     {
-        // Get the letters and position of the letters
-
         // Throw the event
         $this->apply(new LetterGuessedCorrectly($gameId, $outputLetters));
 

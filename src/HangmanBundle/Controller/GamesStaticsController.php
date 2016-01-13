@@ -21,6 +21,8 @@ use HangmanBundle\Form\ChooseLetterType;
 use HangmanBundle\Form\GameStartType;
 use HangmanBundle\Game\Application\Command\ChooseLetter;
 use HangmanBundle\Game\Application\Command\GameStart;
+use HangmanBundle\Game\ReadModel\GameStatics;
+use Symfony\Component\Form\Exception\RuntimeException;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
@@ -66,10 +68,35 @@ class GamesStaticsController extends FOSRestController
         FormFactory $formFactory,
         Router $router,
         RepositoryInterface $readModelRepository
-    ) {
-        $this->commandBus          = $commandBus;
-        $this->uuidGenerator       = $uuidGenerator;
-        $this->formFactory         = $formFactory;
-        $this->router              = $router;
-        $t
+    )
+    {
+        $this->commandBus = $commandBus;
+        $this->uuidGenerator = $uuidGenerator;
+        $this->formFactory = $formFactory;
+        $this->router = $router;
+        $this->readModelRepository = $readModelRepository;
+    }
+
+
+    public function getStaticGamesAction() {
+        $readModel = $this->readModelRepository->findAll();
+
+        if (count($readModel) < 1) {
+            throw new RuntimeException("No Games found");
+        }
+
+        $data = [];
+
+        foreach($readModel as $model) {
+            $tmp = [];
+            $tmp["id"] = $model->getId();
+            $tmp["gameStatus"] = $model->getGameStatus();
+            $tmp["gameStartTime"] = $model->getGameStartTime();
+            $tmp["gameEndTime"] = $model->getGameEndTime();
+
+            $data[] = $tmp;
+        }
+
+        var_dump($data);
+    }
 }

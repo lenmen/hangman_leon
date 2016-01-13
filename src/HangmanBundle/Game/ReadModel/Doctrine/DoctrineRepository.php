@@ -2,7 +2,6 @@
 namespace HangmanBundle\Game\ReadModel\Doctrine;
 
 use Broadway\ReadModel\ReadModelInterface;
-use Broadway\ReadModel\RepositoryInterface;
 use Doctrine\ORM\EntityManager;
 use Simgroep\EventSourcing\EventSourcingBundle\ReadModel\ClearableRepositoryInterface;
 
@@ -26,14 +25,6 @@ class DoctrineRepository implements ClearableRepositoryInterface
     {
         $this->entityManager    = $entityManager;
         $this->entityRepository = $entityManager->getRepository($entityNamespace);
-    }
-
-    /**
-     * @param $entityClass
-     */
-    public function switchRepo($entityClass)
-    {
-        $this->entityRepository = $this->entityManager->getRepository($entityClass);
     }
 
     /**
