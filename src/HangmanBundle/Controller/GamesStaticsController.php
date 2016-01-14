@@ -77,16 +77,18 @@ class GamesStaticsController extends FOSRestController
         $this->readModelRepository = $readModelRepository;
     }
 
-
-    public function getStaticGamesAction() {
+    /**
+     * @return array
+     */
+    public function getStaticGamesAction()
+    {
         $readModel = $this->readModelRepository->findAll();
 
         if (count($readModel) < 1) {
-            throw new RuntimeException("No Games found");
+            return ["no content"];
         }
 
         $data = [];
-
         foreach($readModel as $model) {
             $tmp = [];
             $tmp["id"] = $model->getId();
@@ -97,6 +99,17 @@ class GamesStaticsController extends FOSRestController
             $data[] = $tmp;
         }
 
-        var_dump($data);
+        return $data;
+    }
+
+    public function getGameStaticAction($id)
+    {
+        $readModel = $this->readModelRepository->find($id);
+
+        if (null === $readModel) {
+            return ["no-content found"];
+        }
+
+        return json_encode(serialize($readModel));
     }
 }

@@ -26,7 +26,8 @@
         "jurjean/spray-serializer-bundle": "1.0.x-dev",
         "jurjean/spray-serializer": "2.0.x-dev",
         "simgroep/event-sourcing": "0.0.1",
-        "jms/serializer-bundle": "^1.1"
+        "jms/serializer-bundle": "^1.1",
+        "phpunit/phpunit": "^5.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
