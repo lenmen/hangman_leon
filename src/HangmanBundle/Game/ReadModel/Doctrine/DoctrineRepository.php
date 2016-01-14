@@ -18,10 +18,10 @@ class DoctrineRepository implements ClearableRepositoryInterface
     private $entityRepository;
 
     /**
-     * @param EntityManager $entityManager
+     * @param $entityManager
      * @param string        $entityNamespace
      */
-    public function __construct(EntityManager $entityManager, $entityNamespace)
+    public function __construct($entityManager, $entityNamespace)
     {
         $this->entityManager    = $entityManager;
         $this->entityRepository = $entityManager->getRepository($entityNamespace);
