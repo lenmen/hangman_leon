@@ -9,6 +9,7 @@
 namespace HangmanBundle\Models;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class LetterSaver
 {
@@ -60,7 +61,7 @@ class LetterSaver
      */
     public function LetterExistsInContainer($letter)
     {
-        return in_array($letter,$this->lettersContainer);
+        return in_array($letter,$this->lettersContainer->getValues());
     }
 
     /**
