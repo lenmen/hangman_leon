@@ -66,7 +66,7 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
     /**
      * @test
      */
-    public function it_can_choose_letter()
+    public function it_can_choose_a_wrong_letter()
     {
         // Prefined variables
         $datetime = new \DateTime("now");
@@ -84,9 +84,84 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
             ->when($command)
             ->then([
                 new WrongLetterGuessed($this->uuid, 'l'),
-                new LetterGuessedCorrectly($this->uuid, 'l'),
-                new GameLost($this->uuid, $datetime),
+            ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_guess_a_correct_letter()
+    {
+        // Prefined variables
+        $datetime = new \DateTime("now");
+        $gameStart = new GameStart($this->uuid, "php");
+        $gameStarted = new GameStarted($this->uuid, "php", $datetime);
+
+        $command = new ChooseLetter($this->uuid,'p');
+
+        $this->scenario
+            ->given([])
+            ->when($gameStart)
+            ->then([
+                $gameStarted
+            ])
+            ->when($command)
+            ->then([
+                new LetterGuessedCorrectly($this->uuid, 'p')
+            ]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_game_can_be_won()
+    {
+        // Prefined variables
+        $datetime = new \DateTime("now");
+        $gameStart = new GameStart($this->uuid, "p");
+        $gameStarted = new GameStarted($this->uuid, "p", $datetime);
+
+        $command = new ChooseLetter($this->uuid,'p');
+
+        $this->scenario
+            ->given([])
+            ->when($gameStart)
+            ->then([
+                $gameStarted
+            ])
+            ->when($command)
+            ->then([
+                new LetterGuessedCorrectly($this->uuid, 'p'),
                 new GameWon($this->uuid, $datetime)
             ]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_game_can_be_lost()
+    {
+        // Prefined variables
+        $datetime = new \DateTime("now");
+        $command  = new ChooseLetter($this->uuid,'p');
+
+        $this->scenario
+            ->withAggregateId($this->uuid)
+            ->given([
+                new GameStarted($this->uuid, "i", $datetime),
+                new WrongLetterGuessed($this->uuid, 'p'),
+                new WrongLetterGuessed($this->uuid, 'p'),
+                new WrongLetterGuessed($this->uuid, 'p'),
+                new WrongLetterGuessed($this->uuid, 'p'),
+                new WrongLetterGuessed($this->uuid, 'p'),
+                new WrongLetterGuessed($this->uuid, 'p'),
+                new WrongLetterGuessed($this->uuid, 'p')
+            ])
+            ->when($command)
+            ->then([
+                new WrongLetterGuessed($this->uuid, 'p'),
+                new GameLost($this->uuid, new \DateTime("now"))
+            ]);
+
     }
 }

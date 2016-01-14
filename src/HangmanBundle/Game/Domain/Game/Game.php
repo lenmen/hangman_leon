@@ -102,7 +102,8 @@ class Game extends EventSourcedAggregateRoot
     {
         // if letter already exists do nothing
         if ($this->lettersCorrectlyGuessed->LetterExistsInContainer($letter) || $this->lettersWrongGuessed->LetterExistsInContainer($letter)) {
-           throw new Exception("already guessed");
+            $this->wrongGuessedLetter($gameId, $letter);
+            return;
         }
 
         // Execute the right event
@@ -112,12 +113,11 @@ class Game extends EventSourcedAggregateRoot
 
         if ($wordContainsLetter === false) {
             $this->wrongGuessedLetter($gameId, $letter);
-            return 1;
+            return;
         }
 
         // throw good guess
         $this->correctlyGuessedLetters($gameId, $letter);
-        return 0;
     }
 
     /**
@@ -155,7 +155,7 @@ class Game extends EventSourcedAggregateRoot
         $word = $this->lettersCorrectlyGuessed->convertContainerToString();
 
         if($this->word->matchWord($word)) {
-            $this->apply(new Gamewon($gameId));
+            $this->apply(new GameWon($gameId, new \DateTime("now")));
         }
     }
 

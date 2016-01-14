@@ -68,7 +68,7 @@ class LetterSaver
      * @return mixed|null
      */
     public function convertContainerToString() {
-        $container = $this->lettersContainer;
+        $container = $this->lettersContainer->getValues();
         asort($container);
 
         $letters = '';
