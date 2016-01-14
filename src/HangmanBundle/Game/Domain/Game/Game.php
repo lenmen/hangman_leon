@@ -100,6 +100,10 @@ class Game extends EventSourcedAggregateRoot
      */
     public function chooseLetter($gameId, $letter)
     {
+        if ($this->gameWon || $this->gameLost) {
+            return;
+        }
+
         // if letter already exists do nothing
         if ($this->lettersCorrectlyGuessed->LetterExistsInContainer($letter) || $this->lettersWrongGuessed->LetterExistsInContainer($letter)) {
             $this->wrongGuessedLetter($gameId, $letter);
@@ -126,13 +130,12 @@ class Game extends EventSourcedAggregateRoot
      */
     private function wrongGuessedLetter($gameId, $letter)
     {
+        $this->apply(new WrongLetterGuessed($gameId, $letter));
+
         if ($this->tries->notifyAmountTries() == 1) {
             $time = new \DateTime("now");
             $this->apply(new GameLost($gameId, $time));
-            return;
         }
-
-        $this->apply(new WrongLetterGuessed($gameId, $letter));
     }
 
     /**
