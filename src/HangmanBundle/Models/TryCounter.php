@@ -9,6 +9,8 @@
 namespace HangmanBundle\Models;
 
 
+use Symfony\Component\OptionsResolver\Exception\AccessException;
+
 class TryCounter
 {
     /**
@@ -22,14 +24,18 @@ class TryCounter
      */
     public function __construct($max)
     {
-        $this->maxCount = $max;
+        $this->maxTries = $max;
     }
 
-    /**
+    /**]
      * @return int
      */
     public function notifyAmountTries()
     {
+        if (!is_numeric($this->maxTries)) {
+            throw new AccessException("Wrong type");
+        }
+
         return $this->maxTries;
     }
 
