@@ -9,8 +9,12 @@ use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use HangmanBundle\Models\LetterSaver;
 use HangmanBundle\Models\TryCounter;
 use HangmanBundle\Models\WordChecker;
+use Rhumsaa\Uuid\Console\Exception;
+use Rhumsaa\Uuid\Doctrine\UuidType;
 use Symfony\Component\HttpKernel\Exception\PreconditionFailedHttpException;
 use Symfony\Component\HttpKernel\Exception\PreconditionRequiredHttpException;
+use Symfony\Component\Routing\Exception\InvalidParameterException;
+use Symfony\Component\Validator\Constraints\UuidValidator;
 
 class Game extends EventSourcedAggregateRoot
 {
@@ -64,6 +68,12 @@ class Game extends EventSourcedAggregateRoot
      */
     public static function createGame($gameId, $word)
     {
+        $regexp = '/^([a-z0-9]{8})-([a-z0-9]{4})-([a-z0-9]{4})-([a-z0-9]{4})-([a-z0-9]{12})$/';
+
+        if (!preg_match($regexp, $gameId)) {
+            throw new InvalidParameterException("Please give a valid Uuid");
+        }
+
         $game = new Game();
         $dateTime = new \DateTime("now");
 
@@ -86,24 +96,28 @@ class Game extends EventSourcedAggregateRoot
     /**
      * @param string $gameId
      * @param string $letter
+     * @return int
      */
     public function chooseLetter($gameId, $letter)
     {
         // if letter already exists do nothing
         if ($this->lettersCorrectlyGuessed->LetterExistsInContainer($letter) || $this->lettersWrongGuessed->LetterExistsInContainer($letter)) {
-           return;
+           throw new Exception("already guessed");
         }
 
         // Execute the right event
         $wordContainsLetter = $this->word->wordContainsLetter($letter);
 
-        if ($wordContainsLetter === FALSE) {
+       // var_dump($wordContainsLetter);
+
+        if ($wordContainsLetter === false) {
             $this->wrongGuessedLetter($gameId, $letter);
-            return;
+            return 1;
         }
 
         // throw good guess
         $this->correctlyGuessedLetters($gameId, $letter);
+        return 0;
     }
 
     /**
@@ -145,10 +159,6 @@ class Game extends EventSourcedAggregateRoot
         }
     }
 
-
-    /**
-     * @param GameLost $event
-     */
     public function applyGameLost(GameLost $event)
     {
         $this->tries->removeATry();
