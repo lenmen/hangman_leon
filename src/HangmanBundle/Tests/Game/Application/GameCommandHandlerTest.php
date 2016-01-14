@@ -155,7 +155,7 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
                 new WrongLetterGuessed($this->uuid, 'p'),
                 new WrongLetterGuessed($this->uuid, 'p'),
                 new WrongLetterGuessed($this->uuid, 'p'),
-                new WrongLetterGuessed($this->uuid, 'p')
+//                new WrongLetterGuessed($this->uuid, 'p')
             ])
             ->when($command)
             ->then([
@@ -163,5 +163,24 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
                 new GameLost($this->uuid, new \DateTime("now"))
             ]);
 
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_not_chose_a_letter_when_finished()
+    {
+        // Prefined variables
+        $datetime = new \DateTime("now");
+
+        $this->scenario
+            ->withAggregateId($this->uuid)
+            ->given([
+                new GameStarted($this->uuid, "l", $datetime),
+                new LetterGuessedCorrectly($this->uuid, 'l'),
+                new GameWon($this->uuid, $datetime)
+            ])
+            ->when(new ChooseLetter($this->uuid, 't'))
+            ->then([]);
     }
 }
