@@ -77,11 +77,13 @@ class LetterSaver
             $letters .= $letter;
         }
 
-        return $letter;
+        return $letters;
     }
 
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
+    /**
+     * @return int
+     */
+    public function lengthOfContainer() {
+        return count($this->lettersContainer);
     }
 }
