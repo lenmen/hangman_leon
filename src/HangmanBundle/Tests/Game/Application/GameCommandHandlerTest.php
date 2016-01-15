@@ -127,7 +127,7 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
 
         $datetime = new \DateTime("now");
         $gameStart = new GameStart($id, "p");
-        $gameStarted = new GameStarted($id, "p", $datetime);
+        $gameStarted = new GameStarted($id, "pp", $datetime);
 
         $command = new ChooseLetter($id, 'p');
 
@@ -135,7 +135,7 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
 
         $this->scenario
             ->withAggregateId($id)
-            ->given([new GameStarted($id, "p", $datetime)])
+            ->given([new GameStarted($id, "pp", $datetime)])
             ->when($command)
             ->then([
                 new LetterGuessedCorrectly($id, 'p'),
