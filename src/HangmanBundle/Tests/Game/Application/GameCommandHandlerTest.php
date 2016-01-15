@@ -26,12 +26,15 @@ use HangmanBundle\Game\Domain\Game\WrongLetterGuessed;
 
 class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
 {
-    private $uuid;
+    /**
+     * @var Version4Generator
+     */
+    private $generator;
 
     public function setUp()
     {
         $generator = new Version4Generator();
-        $this->uuid = $generator->generate();
+        $this->generator = $generator;
 
         // Create scenerario from parent
         parent::setUp();
@@ -50,7 +53,7 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
     public function game_can_be_created()
     {
         // Prefined variables
-        $gameId = $this->uuid;
+        $gameId = $this->generator->generate();
         $word = "phpunit";
 
         $command = new GameStart($gameId, $word);
@@ -69,13 +72,15 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
     public function it_can_choose_a_wrong_letter()
     {
         // Prefined variables
+        $id = $this->generator->generate();
         $datetime = new \DateTime("now");
-        $gameStart = new GameStart($this->uuid, "phpunit");
-        $gameStarted = new GameStarted($this->uuid, "phpunit", $datetime);
+        $gameStart = new GameStart($id, "phpunit");
+        $gameStarted = new GameStarted($id, "phpunit", $datetime);
 
-        $command = new ChooseLetter($this->uuid,'l');
+        $command = new ChooseLetter($id,'l');
 
         $this->scenario
+            ->withAggregateId($id)
             ->given([])
             ->when($gameStart)
             ->then([
@@ -83,7 +88,7 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
             ])
             ->when($command)
             ->then([
-                new WrongLetterGuessed($this->uuid, 'l'),
+                new WrongLetterGuessed($id, 'l'),
             ]);
     }
 
@@ -93,11 +98,12 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
     public function it_can_guess_a_correct_letter()
     {
         // Prefined variables
+        $id = $this->generator->generate();
         $datetime = new \DateTime("now");
-        $gameStart = new GameStart($this->uuid, "php");
-        $gameStarted = new GameStarted($this->uuid, "php", $datetime);
+        $gameStart = new GameStart($id, "php");
+        $gameStarted = new GameStarted($id, "php", $datetime);
 
-        $command = new ChooseLetter($this->uuid,'p');
+        $command = new ChooseLetter($id, 'p');
 
         $this->scenario
             ->given([])
@@ -107,7 +113,7 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
             ])
             ->when($command)
             ->then([
-                new LetterGuessedCorrectly($this->uuid, 'p')
+                new LetterGuessedCorrectly($id, 'p')
             ]);
     }
 
@@ -117,22 +123,23 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
     public function a_game_can_be_won()
     {
         // Prefined variables
-        $datetime = new \DateTime("now");
-        $gameStart = new GameStart($this->uuid, "p");
-        $gameStarted = new GameStarted($this->uuid, "p", $datetime);
+        $id = $this->generator->generate();
 
-        $command = new ChooseLetter($this->uuid,'p');
+        $datetime = new \DateTime("now");
+        $gameStart = new GameStart($id, "p");
+        $gameStarted = new GameStarted($id, "p", $datetime);
+
+        $command = new ChooseLetter($id, 'p');
+
+       // var_dump($command);
 
         $this->scenario
-            ->given([])
-            ->when($gameStart)
-            ->then([
-                $gameStarted
-            ])
+            ->withAggregateId($id)
+            ->given([new GameStarted($id, "p", $datetime)])
             ->when($command)
             ->then([
-                new LetterGuessedCorrectly($this->uuid, 'p'),
-                new GameWon($this->uuid, $datetime)
+                new LetterGuessedCorrectly($id, 'p'),
+                new GameWon($id, new \DateTime("now"))
             ]);
     }
 
@@ -142,45 +149,48 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
     public function a_game_can_be_lost()
     {
         // Prefined variables
+        $id = $this->generator->generate();
         $datetime = new \DateTime("now");
-        $command  = new ChooseLetter($this->uuid,'p');
+        $command  = new ChooseLetter($id, 'p');
 
         $this->scenario
-            ->withAggregateId($this->uuid)
+            ->withAggregateId($id)
             ->given([
-                new GameStarted($this->uuid, "i", $datetime),
-                new WrongLetterGuessed($this->uuid, 'p'),
-                new WrongLetterGuessed($this->uuid, 'p'),
-                new WrongLetterGuessed($this->uuid, 'p'),
-                new WrongLetterGuessed($this->uuid, 'p'),
-                new WrongLetterGuessed($this->uuid, 'p'),
-                new WrongLetterGuessed($this->uuid, 'p'),
-//                new WrongLetterGuessed($this->uuid, 'p')
+                new GameStarted($id, "i", $datetime),
+                new WrongLetterGuessed($id, 'p'),
+                new WrongLetterGuessed($id, 'p'),
+                new WrongLetterGuessed($id, 'p'),
+                new WrongLetterGuessed($id, 'p'),
+                new WrongLetterGuessed($id, 'p'),
+                new WrongLetterGuessed($id, 'p'),
+//                new WrongLetterGuessed($id, 'p')
             ])
             ->when($command)
             ->then([
-                new WrongLetterGuessed($this->uuid, 'p'),
-                new GameLost($this->uuid, new \DateTime("now"))
+                new WrongLetterGuessed($id, 'p'),
+                new GameLost($id, new \DateTime("now"))
             ]);
 
     }
 
     /**
      * @test
+     * @expectedException \Assert\InvalidArgumentException
      */
     public function it_can_not_chose_a_letter_when_finished()
     {
         // Prefined variables
+        $id = $this->generator->generate();
         $datetime = new \DateTime("now");
 
         $this->scenario
-            ->withAggregateId($this->uuid)
+            ->withAggregateId($id)
             ->given([
-                new GameStarted($this->uuid, "l", $datetime),
-                new LetterGuessedCorrectly($this->uuid, 'l'),
-                new GameWon($this->uuid, $datetime)
+                new GameStarted($id, "l", $datetime),
+                new LetterGuessedCorrectly($id, 'l'),
+                new GameWon($id, $datetime)
             ])
-            ->when(new ChooseLetter($this->uuid, 't'))
+            ->when(new ChooseLetter($id, 't'))
             ->then([]);
     }
 }
