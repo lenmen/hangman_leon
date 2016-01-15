@@ -55,7 +55,7 @@ class WordChecker
      * @param string $letter
      * @return array
      */
-    public function getLocationsOfLetters($letter)
+    public function getLocationsAndLettersOfContainer($letter)
     {
         $letterLocations = [];
         $pos = 0;
@@ -72,7 +72,16 @@ class WordChecker
      * @param string $word
      * @return bool
      */
-    public function matchWord($word) {
+    public function matchWord($word)
+    {
         return ($this->word == $word);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getWord()
+    {
+        return $this->word;
     }
 }
