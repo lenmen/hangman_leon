@@ -9,6 +9,7 @@
 namespace HangmanBundle\Game\ReadModel;
 
 
+use Assert\Assertion;
 use Broadway\ReadModel\Projector;
 use Broadway\ReadModel\RepositoryInterface;
 use HangmanBundle\Game\Domain\Game\GameLost;
@@ -40,12 +41,10 @@ class GameStaticsProjector extends Projector
      */
     public function applyGameStarted(GameStartedEvent $event)
     {
-        $readModel = new GameStatics();
-        $readModel->setGameId($event->getGameId());
-        $readModel->setGameStatus("In progress");
-        $readModel->setGameStartTime($event->getStartTime());
-
+        $readModel = new GameStatics($event->getGameId(), $event->getWord(), $event->getStartTime());
         $this->repository->save($readModel);
+
+        var_dump($readModel);
     }
 
     /**
@@ -53,8 +52,12 @@ class GameStaticsProjector extends Projector
      */
     public function applyLetterGuessedCorrectly(LetterGuessedCorrectly $event)
     {
-        $readModel = $this->repository->load($event->getGameId());
-        $readModel->setLetterCorrectlyGuessed($event->getLetters());
+        $readModel = $this->repository->find($event->getGameId());
+
+        Assertion::notNull($readModel, "Readmodel doesn't hold an object");
+
+        $readModel = $readModel->setLetterCorrectlyGuessed($event->getLetters());
+
         $this->repository->save($readModel);
     }
 
@@ -63,21 +66,21 @@ class GameStaticsProjector extends Projector
      */
     public function applyWrongLetterGuessed(WrongLetterGuessed $event)
     {
-        $readModel = $this->repository->load($event->getGameId());
+        $readModel = $this->repository->find($event->getGameId());
         $readModel->setLetterWrongGuessed($event->getLetter());
         $this->repository->save($readModel);
     }
 
     public function applyGameWon(GameWon $event)
     {
-        $readModel = $this->repository->load($event->getGameId());
+        $readModel = $this->repository->find($event->getGameId());
         $readModel->setStatus("Game won!");
         $this->repository->save($readModel);
     }
 
     public function applyGameLost(GameLost $event)
     {
-        $readModel = $this->repository->load($event->getGameId());
+        $readModel = $this->repository->find($event->getGameId());
         $readModel->setStatus("Game lost!");
         $readModel->setGameEndTime($event->getExpandedTimeOnGame());
         $this->repository->save($readModel);

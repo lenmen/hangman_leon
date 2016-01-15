@@ -4,6 +4,8 @@ namespace HangmanBundle\Game\ReadModel;
 
 
 use Broadway\ReadModel\ReadModelInterface;
+use HangmanBundle\Models\LetterSaver;
+use HangmanBundle\Models\WordChecker;
 
 class GameStatics implements ReadModelInterface
 {
@@ -19,12 +21,17 @@ class GameStatics implements ReadModelInterface
     private $gameId;
 
     /**
-     * @var string
+     * @var WordChecker
+     */
+    private $word;
+
+    /**
+     * @var LetterSaver
      */
     private $letterWrongGuessed;
 
     /**
-     * @var string
+     * @var LetterSaver
      */
     private $letterCorrectlyGuessed;
 
@@ -48,6 +55,22 @@ class GameStatics implements ReadModelInterface
      */
     private $gameEndTime;
 
+    /**
+     * GameStatics constructor.
+     * @param string $gameId
+     * @param string $word
+     * @param string $status
+     * @param \DateTime $startTime
+     */
+    public function __construct($gameId, $word, $startTime, $status = "in progress")
+    {
+        $this->gameId = $gameId;
+        $this->word = new WordChecker($word);
+        $this->gameStatus = $status;
+        $this->gameStartTime = $startTime;
+        $this->letterWrongGuessed = new LetterSaver();
+        $this->letterCorrectlyGuessed = new LetterSaver();
+    }
 
     /**
      * Get id
@@ -57,20 +80,6 @@ class GameStatics implements ReadModelInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set gameId
-     *
-     * @param string $gameId
-     *
-     * @return GameStatics
-     */
-    public function setGameId($gameId)
-    {
-        $this->gameId = $gameId;
-
-        return $this;
     }
 
     /**
@@ -92,7 +101,7 @@ class GameStatics implements ReadModelInterface
      */
     public function setLetterWrongGuessed($letterWrongGuessed)
     {
-        $this->letterWrongGuessed = $letterWrongGuessed;
+        $this->letterWrongGuessed->addLetterToContainer($letterWrongGuessed);
 
         return $this;
     }
@@ -116,7 +125,7 @@ class GameStatics implements ReadModelInterface
      */
     public function setLetterCorrectlyGuessed($letterCorrectlyGuessed)
     {
-        $this->letterCorrectlyGuessed = $letterCorrectlyGuessed;
+        $this->letterCorrectlyGuessed->addLetterToContainer($letterCorrectlyGuessed);
 
         return $this;
     }
@@ -180,20 +189,6 @@ class GameStatics implements ReadModelInterface
     }
 
     /**
-     * Set gameStartTime
-     *
-     * @param \DateTime $gameStartTime
-     *
-     * @return GameStatics
-     */
-    public function setGameStartTime($gameStartTime)
-    {
-        $this->gameStartTime = $gameStartTime;
-
-        return $this;
-    }
-
-    /**
      * Get gameStartTime
      *
      * @return \DateTime
@@ -225,5 +220,13 @@ class GameStatics implements ReadModelInterface
     public function getGameEndTime()
     {
         return $this->gameEndTime;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWord()
+    {
+        return $this->word;
     }
 }
