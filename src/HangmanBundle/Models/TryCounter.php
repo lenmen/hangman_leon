@@ -9,6 +9,7 @@
 namespace HangmanBundle\Models;
 
 
+use Assert\Assertion;
 use Symfony\Component\OptionsResolver\Exception\AccessException;
 
 class TryCounter
@@ -32,9 +33,7 @@ class TryCounter
      */
     public function notifyAmountTries()
     {
-        if (!is_numeric($this->maxTries)) {
-            throw new AccessException("Wrong type");
-        }
+        Assertion::numeric($this->maxTries, "The property doesn't have an integer as value");
 
         return $this->maxTries;
     }
@@ -44,13 +43,8 @@ class TryCounter
      */
     public function removeATry()
     {
-        if ($this->notifyAmountTries() == 0) {
-            return;
-        }
-
         $this->maxTries--;
 
         return $this;
     }
-
 }

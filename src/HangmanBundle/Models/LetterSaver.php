@@ -48,36 +48,12 @@ class LetterSaver
     }
 
     /**
-     * @return int
-     */
-    public function getAmountLettersStoredInContainer()
-    {
-        return count($this->lettersContainer);
-    }
-
-    /**
      * @param string $letter
      * @return bool
      */
     public function LetterExistsInContainer($letter)
     {
         return in_array($letter,$this->lettersContainer->getValues());
-    }
-
-    /**
-     * @return mixed|null
-     */
-    public function convertContainerToString() {
-        $container = $this->lettersContainer->getValues();
-        asort($container);
-
-        $letters = '';
-
-        foreach ($container as $letter) {
-            $letters .= $letter;
-        }
-
-        return $letters;
     }
 
     /**

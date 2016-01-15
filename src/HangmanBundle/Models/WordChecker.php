@@ -44,15 +44,6 @@ class WordChecker
 
     /**
      * @param string $letter
-     * @return int
-     */
-    public function amountLettersFoundInWord($letter)
-    {
-        return substr_count($this->word, $letter);
-    }
-
-    /**
-     * @param string $letter
      * @return array
      */
     public function getLocationsAndLettersOfContainer($letter)
@@ -66,22 +57,5 @@ class WordChecker
         }
 
         return $letterLocations;
-    }
-
-    /**
-     * @param string $word
-     * @return bool
-     */
-    public function matchWord($word)
-    {
-        return ($this->word == $word);
-    }
-
-    /**
-     * @return string
-     */
-    protected function getWord()
-    {
-        return $this->word;
     }
 }
