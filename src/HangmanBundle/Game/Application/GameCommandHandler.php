@@ -28,7 +28,7 @@ class GameCommandHandler extends CommandHandler
      */
     public function handleGameStart(GameStart $command)
     {
-        $game = Game::createGame($command->getGameId(), $command->getWord());
+        $game = Game::gameStart($command->getGameId(), $command->getWord());
         $this->repository->save($game);
     }
 
