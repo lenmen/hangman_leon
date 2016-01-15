@@ -109,7 +109,6 @@ class Game extends EventSourcedAggregateRoot
         // Execute the right event
         $wordContainsLetter = $this->word->wordContainsLetter($letter);
 
-        var_dump($wordContainsLetter);
 
         if ($wordContainsLetter === false) {
             $this->wrongGuessedLetter($gameId, $letter);
@@ -151,7 +150,6 @@ class Game extends EventSourcedAggregateRoot
             $arrLetters = $this->word->getLocationsAndLettersOfContainer($outputLetters);
 
             foreach ($arrLetters as $l) {
-                echo "\nLetter found: " . $l . "\n";
                 if ($this->word->wordContainsLetter($l) === false) {
                     $all_found = false;
                     break;
