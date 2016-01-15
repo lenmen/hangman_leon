@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f4eb4ec61261a92370a92ebcf0ceacde",
-    "content-hash": "d2f44e530938cb99ee3e2562b0e7a485",
+    "hash": "4add4a0a7b03b43cd90380a99357b4bb",
+    "content-hash": "23b7774d96a341578a7b42510287a344",
     "packages": [
         {
             "name": "arvenil/ninja-mutex",
@@ -3954,16 +3954,16 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.3.9",
+            "version": "v2.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/swiftmailer-bundle.git",
-                "reference": "3d21ada19f23631f558ad6df653b168e35362e78"
+                "reference": "de5a2ddcaf91d2e44c19161e0fe8ed88022ceb51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/3d21ada19f23631f558ad6df653b168e35362e78",
-                "reference": "3d21ada19f23631f558ad6df653b168e35362e78",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/de5a2ddcaf91d2e44c19161e0fe8ed88022ceb51",
+                "reference": "de5a2ddcaf91d2e44c19161e0fe8ed88022ceb51",
                 "shasum": ""
             },
             "require": {
@@ -4007,20 +4007,20 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2015-11-28 10:59:29"
+            "time": "2016-01-14 10:25:38"
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.1",
+            "version": "v2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "8956ed50a44c5c4e02f2176c0773e24487477b09"
+                "reference": "f3e6a82bcbea4db3b56df08e491e20a1faae82b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/8956ed50a44c5c4e02f2176c0773e24487477b09",
-                "reference": "8956ed50a44c5c4e02f2176c0773e24487477b09",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/f3e6a82bcbea4db3b56df08e491e20a1faae82b5",
+                "reference": "f3e6a82bcbea4db3b56df08e491e20a1faae82b5",
                 "shasum": ""
             },
             "require": {
@@ -4140,7 +4140,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-12-26 15:56:52"
+            "time": "2016-01-14 12:01:11"
         },
         {
             "name": "twig/twig",
@@ -4724,16 +4724,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.1",
+            "version": "v2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "2deb2ccbe184948ae4e85e7b99e962738d3d2d69"
+                "reference": "855dc0e829fad123966347612b4183e307338c11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/2deb2ccbe184948ae4e85e7b99e962738d3d2d69",
-                "reference": "2deb2ccbe184948ae4e85e7b99e962738d3d2d69",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/855dc0e829fad123966347612b4183e307338c11",
+                "reference": "855dc0e829fad123966347612b4183e307338c11",
                 "shasum": ""
             },
             "require": {
@@ -4775,7 +4775,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2015-12-11 08:57:52"
+            "time": "2016-01-06 09:59:23"
         }
     ],
     "aliases": [],
