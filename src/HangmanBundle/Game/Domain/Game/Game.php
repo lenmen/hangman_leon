@@ -4,6 +4,7 @@
 namespace HangmanBundle\Game\Domain\Game;
 
 
+use Assert\Assertion;
 use Broadway\Domain\DateTime;
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use HangmanBundle\Models\LetterSaver;
@@ -66,13 +67,9 @@ class Game extends EventSourcedAggregateRoot
      * @param string $word
      * @return Game
      */
-    public static function createGame($gameId, $word)
+    public static function gameStart($gameId, $word)
     {
-        $regexp = '/^([a-z0-9]{8})-([a-z0-9]{4})-([a-z0-9]{4})-([a-z0-9]{4})-([a-z0-9]{12})$/';
-
-        if (!preg_match($regexp, $gameId)) {
-            throw new InvalidParameterException("Please give a valid Uuid");
-        }
+        Assertion::uuid($gameId, "Not a valid uuid");
 
         $game = new Game();
         $dateTime = new \DateTime("now");
@@ -100,9 +97,8 @@ class Game extends EventSourcedAggregateRoot
      */
     public function chooseLetter($gameId, $letter)
     {
-        if ($this->gameWon || $this->gameLost) {
-            return;
-        }
+        Assertion::false($this->gameWon, "Game already won");
+        Assertion::false($this->gameLost,"Game already lost");
 
         // if letter already exists do nothing
         if ($this->lettersCorrectlyGuessed->LetterExistsInContainer($letter) || $this->lettersWrongGuessed->LetterExistsInContainer($letter)) {
@@ -113,7 +109,7 @@ class Game extends EventSourcedAggregateRoot
         // Execute the right event
         $wordContainsLetter = $this->word->wordContainsLetter($letter);
 
-       // var_dump($wordContainsLetter);
+        var_dump($wordContainsLetter);
 
         if ($wordContainsLetter === false) {
             $this->wrongGuessedLetter($gameId, $letter);
@@ -147,18 +143,26 @@ class Game extends EventSourcedAggregateRoot
         // Throw the event
         $this->apply(new LetterGuessedCorrectly($gameId, $outputLetters));
 
-        $checkCurrentLetters = $this->word->getLocationsOfLetters($outputLetters);
-        $correctlyGuesed = $this->lettersCorrectlyGuessed;
+        $all_found = false;
 
-        foreach ($correctlyGuesed as $pos => $l) {
-            $correctlyGuesed->addLetterWithKeyToContainer($pos, $l);
+        // check if the array has the same size
+        if ($this->lettersCorrectlyGuessed->lengthOfContainer() == $this->word->getLenghtOfWord()) {
+            // convert string to array
+            $arrLetters = $this->word->getLocationsAndLettersOfContainer($outputLetters);
+
+            foreach ($arrLetters as $l) {
+                echo "\nLetter found: " . $l . "\n";
+                if ($this->word->wordContainsLetter($l) === false) {
+                    $all_found = false;
+                    break;
+                }
+
+                $all_found = true;
+            }
         }
 
-        // Check if the user has guessed the letters
-        $word = $this->lettersCorrectlyGuessed->convertContainerToString();
-
-        if($this->word->matchWord($word)) {
-            $this->apply(new GameWon($gameId, new \DateTime("now")));
+        if($all_found) {
+            $this->apply(new GameWon($this->gameId, new \DateTime("now")));
         }
     }
 
@@ -190,7 +194,7 @@ class Game extends EventSourcedAggregateRoot
      */
     public function applyLetterGuessedCorrectly(LetterGuessedCorrectly $event)
     {
-        $lettersAndPosition = $this->word->getLocationsOfLetters($event->getLetters());
+        $lettersAndPosition = $this->word->getLocationsAndLettersOfContainer($event->getLetters());
 
         // add the letters to the container
         foreach ($lettersAndPosition as $pos => $val)
