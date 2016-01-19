@@ -105,3 +105,5 @@ broadway:
     saga:
         mongodb:
             storage_suffix: "_%kernel.environment%"
+
+bazinga_faker: ~

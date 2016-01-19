@@ -43,8 +43,6 @@ class GameStaticsProjector extends Projector
     {
         $readModel = new GameStatics($event->getGameId(), $event->getWord(), $event->getStartTime());
         $this->repository->save($readModel);
-
-        var_dump($readModel);
     }
 
     /**
@@ -52,11 +50,12 @@ class GameStaticsProjector extends Projector
      */
     public function applyLetterGuessedCorrectly(LetterGuessedCorrectly $event)
     {
-        $readModel = $this->repository->find($event->getGameId());
+        $readModel = $this->repository->findBy(["gameId" => $event->getGameId()]);
 
         Assertion::notNull($readModel, "Readmodel doesn't hold an object");
 
-        $readModel = $readModel->setLetterCorrectlyGuessed($event->getLetters());
+        $lastResult = end($readModel);
+        $readModel = $lastResult->setLetterCorrectlyGuessed($event->getLetters());
 
         $this->repository->save($readModel);
     }
@@ -66,8 +65,9 @@ class GameStaticsProjector extends Projector
      */
     public function applyWrongLetterGuessed(WrongLetterGuessed $event)
     {
-        $readModel = $this->repository->find($event->getGameId());
-        $readModel->setLetterWrongGuessed($event->getLetter());
+        $readModel = $this->repository->findBy(["gameId" => $event->getGameId()]);
+        $lastResult = end($readModel);
+        $readModel = $lastResult->setLetterWrongGuessed($event->getLetter());
         $this->repository->save($readModel);
     }
 
@@ -75,6 +75,7 @@ class GameStaticsProjector extends Projector
     {
         $readModel = $this->repository->find($event->getGameId());
         $readModel->setStatus("Game won!");
+        $readModel->setGameEndTime($event->getExpandedTimeOnGame());
         $this->repository->save($readModel);
     }
 

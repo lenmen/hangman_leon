@@ -62,4 +62,14 @@ class LetterSaver
     public function lengthOfContainer() {
         return count($this->lettersContainer);
     }
+
+    public function getLettersFromContainer()
+    {
+        return json_encode($this->lettersContainer->getValues());
+    }
+
+    public function __toString()
+    {
+        return "letter";
+    }
 }

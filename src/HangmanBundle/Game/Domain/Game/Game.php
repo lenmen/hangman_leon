@@ -75,6 +75,7 @@ class Game extends EventSourcedAggregateRoot
         $dateTime = new \DateTime("now");
 
         $game->apply(new GameStarted($gameId, $word, $dateTime));
+
         return $game;
     }
 
@@ -84,7 +85,7 @@ class Game extends EventSourcedAggregateRoot
     public function applyGameStarted(GameStarted $event)
     {
         $this->gameId = $event->getGameId();
-        $this->word = new WordChecker($event->getWord());
+        $this->word =  new WordChecker($event->getWord());
         $this->tries = new TryCounter(8);
         $this->lettersCorrectlyGuessed = new LetterSaver();
         $this->lettersWrongGuessed = new LetterSaver();

@@ -58,4 +58,9 @@ class WordChecker
 
         return $letterLocations;
     }
+
+    public function __toString()
+    {
+        return 'WordChecker';
+    }
 }

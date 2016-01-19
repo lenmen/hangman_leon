@@ -15,6 +15,7 @@ use Broadway\ReadModel\Testing\ProjectorScenarioTestCase;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use HangmanBundle\Game\Domain\Game\GameStarted;
 use HangmanBundle\Game\Domain\Game\LetterGuessedCorrectly;
+use HangmanBundle\Game\Domain\Game\WrongLetterGuessed;
 use HangmanBundle\Game\ReadModel\GameStatics;
 use HangmanBundle\Game\ReadModel\GameStaticsProjector;
 
@@ -122,7 +123,7 @@ class GameStaticsProjectorTest extends ProjectorScenarioTestCase
 
         $this->scenario
             ->given([new GameStarted($gameId, "testsuite", $dateTime)])
-            ->when(new LetterGuessedCorrectly($gameId, 'p'))
+            ->when(new WrongLetterGuessed($gameId, 'p'))
             ->then([$this->applyLetterWithReadModel($gameId, "testsuite", $dateTime, 1, 'p')]);
     }
 }

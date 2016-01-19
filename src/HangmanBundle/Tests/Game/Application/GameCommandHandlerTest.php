@@ -131,7 +131,6 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
 
         $command = new ChooseLetter($id, 'p');
 
-       // var_dump($command);
 
         $this->scenario
             ->withAggregateId($id)

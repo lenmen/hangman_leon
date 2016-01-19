@@ -2,7 +2,9 @@
 
 namespace HangmanBundle\Controller;
 
+use Bazinga\Bundle\FakerBundle\DependencyInjection\BazingaFakerExtension;
 use Broadway\CommandHandling\CommandBusInterface;
+use Broadway\ReadModel\ReadModelInterface;
 use Broadway\UuidGenerator\UuidGeneratorInterface;
 use Broadway\ReadModel\RepositoryInterface;
 
@@ -15,10 +17,14 @@ use HangmanBundle\Form\ChooseLetterType;
 use HangmanBundle\Form\GameStartType;
 use HangmanBundle\Game\Application\Command\ChooseLetter;
 use HangmanBundle\Game\Application\Command\GameStart;
+use HangmanBundle\Services\MessagesService;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class DefaultController
@@ -44,6 +50,11 @@ class DefaultController extends FOSRestController
     private $formFactory;
 
     /**
+     * @var RepositoryInterface
+     */
+    private $readModelRepository;
+
+    /**
      * @var Router
      */
     private $router;
@@ -53,22 +64,25 @@ class DefaultController extends FOSRestController
      * @param UuidGeneratorInterface $uuidGenerator
      * @param FormFactory            $formFactory
      * @param Router                 $router
+     * @param RepositoryInterface    $readModelRepository
      */
     public function __construct(
         CommandBusInterface $commandBus,
         UuidGeneratorInterface $uuidGenerator,
         FormFactory $formFactory,
-        Router $router
+        Router $router,
+        RepositoryInterface $readModelInterface
     ) {
         $this->commandBus          = $commandBus;
         $this->uuidGenerator       = $uuidGenerator;
         $this->formFactory         = $formFactory;
         $this->router              = $router;
+        $this->readModelRepository = $readModelInterface;
     }
 
-    public function indexAction()
+    public function getGameMenuAction()
     {
-        return $this->render('HangmanBundle:Default:index.html.twig');
+        return "hello world";
     }
 
     /**
@@ -76,31 +90,37 @@ class DefaultController extends FOSRestController
      * @param int $id
      * @return array
      */
-    public function getGameAction(Request $request, $id)
+    public function getGameAction(Request $request, $id = 0)
     {
-        // Get the game
-//        $readModelRepository = $this->get("hangman.read_models.picker")->getReadModelRepository('HangmanBundle\Game\ReadModel\GameStatus');
-//        var_dump($readModelRepository);
-//        $game = $this->readModelRepository->find($id);
-//
-//        if (!$game) {
-//            throw $this->createNotFoundException("Game not found");
-//        }
-//
-//        //return json_encode([$game]);
-//
-//        return [
-//            "uuid" => $game->getId(),
-//            "word" => $game->getWord()
-//        ];
-    }
-
-    public function getWonGamesAction(Request $request, $id)
-    {
-        //$this->readModelRepository->``
+        // Checks if the game exists
         $game = $this->readModelRepository->find($id);
+
+        if (is_null($game)) {
+            $status = [
+                "statusCode" => 1,
+                "statusMessage" => "game not found"
+            ];
+
+            return new JsonResponse($status, 201, array('Access-Control-Allow-Origin' => '*'));
+        }
+
+        $status = [
+            "statusCode" => 0,
+            "statusMessage" => "game found"
+        ];
+
+        return new JsonResponse($status, 201, array('Access-Control-Allow-Origin' => '*'));
     }
 
+
+    public function getGameWonAction($id)
+    {
+        $game = $this->readModelRepository->find($id);
+
+        if (is_null($game)) {
+            return $this->redirectToRoute("get_game", ["id" => $id]);
+        }
+    }
     /**
      * @param Request $request
      * @return View|Form
@@ -108,13 +128,37 @@ class DefaultController extends FOSRestController
     public function postGameAction(Request $request)
     {
         $uuid = $this->uuidGenerator->generate();
-        $gameRequest = $request->request->get("game");
 
-        $gameStartCommand = new GameStart($uuid, $gameRequest["word"]);
-        $form = $this->formFactory->create(new GameStartType(), $gameStartCommand);
-            
-        //return var_dump($gameStartCommand->getWord());
-       return $this->handleForm($request, $form, $uuid, $gameStartCommand);
+        // Fake the word
+        $faker = \Faker\Factory::create();
+
+        $gameStartCommand = new GameStart($uuid, strtolower($faker->name), new \DateTime("now"));
+        $this->handleCommand($gameStartCommand);
+
+        $id = $this->getIdOfGame($uuid);
+
+        $response = [
+            "statusCode" => 0,
+            "id" => $id,
+            "message" => "Game created"
+        ];
+
+        return new JsonResponse($response, 201, array('Access-Control-Allow-Origin' => '*'));
+    }
+
+    /**
+     * @param string $uuid
+     * @return string
+     */
+    private function getIdOfGame($uuid)
+    {
+        $game = $this->readModelRepository->findBy(["gameId" => $uuid]);
+
+        if (count($game) < 1 ) {
+            throw new NotFoundHttpException("item not found");
+        }
+
+        return $game[0]->getId();
     }
 
     /**
@@ -149,13 +193,7 @@ class DefaultController extends FOSRestController
 
             $this->handleCommand($command);
 
-            return $this->redirectView(
-                $this->router->generate(
-                    'get_game',
-                    array('id' => $id)
-                ),
-                Codes::HTTP_CREATED
-            );
+            return true;
         }
         
         return $form;
