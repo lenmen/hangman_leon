@@ -1,0 +1,13 @@
+services:
+  hangman.event.repo:
+    class: Hangman\Bundle\Game\Domain\Game\GameRepository
+    arguments:
+      - "@broadway.event_store"
+      - "@broadway.event_handling.event_bus"
+      - [ @broadway.metadata_enriching_event_stream_decorator ]
+
+  hangman.game.handler:
+    class: Hangman\Bundle\Game\Application\GammeCommandHandler
+    arguments: ["@hangman.event.repo"]
+    tags:
+      - { name: command_handler }

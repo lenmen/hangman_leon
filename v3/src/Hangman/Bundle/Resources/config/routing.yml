@@ -1,0 +1,3 @@
+hangman_homepage:
+    path:     /
+    defaults: { _controller: HangmanBundle:Default:index }

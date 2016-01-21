@@ -1,0 +1,4 @@
+hangman:
+    resource: "@HangmanBundle/Resources/config/routing.yml"
+    prefix:   /
+
