@@ -12,25 +12,12 @@ services:
               - @broadway.event_handling.event_bus
               - [ @broadway.metadata_enriching_event_stream_decorator ]
 
-      hangman.read_model_repository:
-          class: HangmanBundle\Game\ReadModel\Doctrine\DoctrineRepository
-          arguments:
-            - @doctrine.orm.entity_manager
-            - "HangmanBundle\Game\ReadModel\GameStarted"
-
       hangman.read_model_game_statics_repository:
           class: HangmanBundle\Game\ReadModel\Doctrine\DoctrineRepository
           arguments:
             - @doctrine.orm.entity_manager
             - "HangmanBundle\Game\ReadModel\GameStatics"
 
-      hangman.read_model.projector.game_started:
-          class: HangmanBundle\Game\ReadModel\GameStartedProjector
-          arguments:
-            - @hangman.read_model_repository
-          tags:
-            - { name: broadway.domain.event_listener }
-            - { name: projector.replayable, repository: hangman.read_model_repository }
 
       hangman.read_model.projector.game_statics:
           class: HangmanBundle\Game\ReadModel\GameStaticsProjector

@@ -16,8 +16,6 @@ HangmanBundle\Game\ReadModel\LetterChosen:
               nullable: false
           letter:
               type: string
-              length: 10
-              nullable: false
           correctGuessed:
               type: boolean
               default: false

@@ -72,20 +72,20 @@ class Game extends EventSourcedAggregateRoot
         Assertion::uuid($gameId, "Not a valid uuid");
 
         $game = new Game();
-        $dateTime = new \DateTime("now");
+        $dateTime = DateTime::now();
 
         $game->apply(new GameStarted($gameId, $word, $dateTime));
 
         return $game;
     }
 
-    /**
+    /**","short_class":"DefaultController","class":"Ha
      * @param GameStarted $event
      */
     public function applyGameStarted(GameStarted $event)
     {
         $this->gameId = $event->getGameId();
-        $this->word =  new WordChecker($event->getWord());
+        $this->word =  new WordChecker($event->getWord()); //new WordChecker($event->getWord());
         $this->tries = new TryCounter(8);
         $this->lettersCorrectlyGuessed = new LetterSaver();
         $this->lettersWrongGuessed = new LetterSaver();
@@ -98,6 +98,8 @@ class Game extends EventSourcedAggregateRoot
      */
     public function chooseLetter($gameId, $letter)
     {
+        var_dump($letter);
+
         Assertion::false($this->gameWon, "Game already won");
         Assertion::false($this->gameLost,"Game already lost");
 
@@ -129,8 +131,8 @@ class Game extends EventSourcedAggregateRoot
         $this->apply(new WrongLetterGuessed($gameId, $letter));
 
         if ($this->tries->notifyAmountTries() == 1) {
-            $time = new \DateTime("now");
-            $this->apply(new GameLost($gameId, $time));
+            $dateTime = DateTime::now();
+            $this->apply(new GameLost($gameId, $dateTime));
         }
     }
 
@@ -160,8 +162,10 @@ class Game extends EventSourcedAggregateRoot
             }
         }
 
+        $dateTime = DateTime::now();
+
         if($all_found) {
-            $this->apply(new GameWon($this->gameId, new \DateTime("now")));
+            $this->apply(new GameWon($this->gameId, $dateTime));
         }
     }
 
@@ -184,6 +188,7 @@ class Game extends EventSourcedAggregateRoot
      */
     public function applyWrongLetterGuessed(WrongLetterGuessed $event)
     {
+
         $this->lettersWrongGuessed->addLetterToContainer($event->getLetter());
         $this->tries->removeATry();
     }
@@ -193,12 +198,22 @@ class Game extends EventSourcedAggregateRoot
      */
     public function applyLetterGuessedCorrectly(LetterGuessedCorrectly $event)
     {
-        $lettersAndPosition = $this->word->getLocationsAndLettersOfContainer($event->getLetters());
+        var_dump($event->getLetters());
 
-        // add the letters to the container
-        foreach ($lettersAndPosition as $pos => $val)
-        {
-            $this->lettersCorrectlyGuessed->addLetterWithKeyToContainer($pos, $val);
+        $lettersAndPosition = [];
+
+        foreach ($event->getLetters() as $letter) {
+            $lettersAndPosition[] = $this->word->getLocationsAndLettersOfContainer($letter);
+        }
+
+        $lengthArr = count($lettersAndPosition);
+        $iterator = 0;
+
+        for ($iterator; $iterator < $lengthArr; $iterator++) {
+            $key = key($lettersAndPosition[$iterator]);
+            $val = $lettersAndPosition[$iterator];
+
+            $this->lettersCorrectlyGuessed->addLetterWithKeyToContainer($key, $val);
         }
     }
 }

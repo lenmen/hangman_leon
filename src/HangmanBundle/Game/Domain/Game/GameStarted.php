@@ -3,23 +3,25 @@
 
 namespace HangmanBundle\Game\Domain\Game;
 
+use Broadway\Domain\DateTime;
+
 
 class GameStarted extends GameEvent
 {
     /**
-     * @var string
+     * @var Word
      */
     private $word;
 
     /**
-     * @var \DateTime
+     * @var string
      */
     private $startTime;
 
     /**
      * @param string $gameId
-     * @param $word
-     * @param $datetime
+     * @param string $word
+     * @param string $datetime
      */
     public function __construct($gameId, $word, $datetime) {
         parent::__construct($gameId);

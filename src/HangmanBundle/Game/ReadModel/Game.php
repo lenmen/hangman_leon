@@ -33,7 +33,7 @@ class Game implements ReadModelInterface
     /**
      * @var LetterSaver
      */
-    private $letterGuessedCorrectly;
+    private $letterCorrectlyGuessed;
 
     /**
      * @var LetterSaver
@@ -47,8 +47,8 @@ class Game implements ReadModelInterface
 
     public function __construct($gameId, $word)
     {
-        $this->letterGuessedCorrectly = new LetterSaver();
-        $this->wrongLetterGuessed = new LetterSaver();
+        $this->letterCorrectlyGuessed = new LetterSaver();
+        $this->letterWrongGuessed = new LetterSaver();
         $this->gameId = $gameId;
         $this->gameStatus = "in progress";
         $this->word = new WordChecker($word);
@@ -99,6 +99,13 @@ class Game implements ReadModelInterface
     }
 
     /**
+     * @param LetterSaver $word
+     */
+    public function initLetterCorrectlyGuessed(LetterSaver $letterSaver) {
+        $this->letterGuessedCorrectly = $letterSaver;
+    }
+
+    /**
      * Set letterWrongGuessed
      *
      * @param string $letterWrongGuessed
@@ -131,7 +138,8 @@ class Game implements ReadModelInterface
      */
     public function setLetterCorrectlyGuessed($letterCorrectlyGuessed)
     {
-        $this->letterCorrectlyGuessed->addLetterToContainer($letterCorrectlyGuessed);
+        $this->letterGuessedCorrectly->addLetterToContainer($this->letterGuessedCorrectly);
+       // $this->letterGuessedCorrectly->addLetterToContainer($letterCorrectlyGuessed);
 
         return $this;
     }
@@ -143,7 +151,7 @@ class Game implements ReadModelInterface
      */
     public function getLetterCorrectlyGuessed()
     {
-        return $this->letterCorrectlyGuessed;
+        return $this->letterGuessedCorrectly;
     }
 
     /**
@@ -161,8 +169,6 @@ class Game implements ReadModelInterface
     }
 
     /**
-     * Get gameStatus
-     *
      * @return string
      */
     public function getGameStatus()

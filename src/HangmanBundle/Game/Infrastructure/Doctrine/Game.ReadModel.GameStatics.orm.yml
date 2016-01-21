@@ -27,11 +27,11 @@ HangmanBundle\Game\ReadModel\GameStatics:
       length: 50
       nullable: false
     expanededTimeOnGame:
-      type: datetime
+      type: string
       nullable: true
     gameStartTime:
-      type: datetime
+      type: string
       nullable: true
     gameEndTime:
-      type: datetime
+      type: string
       nullable: true

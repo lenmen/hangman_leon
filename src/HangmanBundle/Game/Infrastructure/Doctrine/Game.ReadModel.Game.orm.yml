@@ -18,16 +18,12 @@ HangmanBundle\Game\ReadModel\Game:
             type: string
             length: 50
             nullable: false
-    OneToOne:
-        gameEnd:
-            targetEntity: HangmanBundle\Game\ReadModel\GameEnd
-            JoinColumn:
-                name: gameId
-                referencedColumnName: gameId
-    OneToMany:
-        lettersChosen:
-            targetEntity: HangmanBundle\Game\ReadModel\LetterChosen
-            JoinColumn:
-                name: gameId
-                referencedColumnName: gameId
+        letterWrongGuessed:
+            type: string
+            length: 255
+            nullable: true
+        letterCorrectlyGuessed:
+            type: string
+            length: 255
+            nullable: true
     lifecycleCallbacks: {}

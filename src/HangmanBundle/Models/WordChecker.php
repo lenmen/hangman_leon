@@ -61,6 +61,6 @@ class WordChecker
 
     public function __toString()
     {
-        return 'WordChecker';
+        return serialize($this);
     }
 }

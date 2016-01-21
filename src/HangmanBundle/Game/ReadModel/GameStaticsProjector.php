@@ -41,7 +41,8 @@ class GameStaticsProjector extends Projector
      */
     public function applyGameStarted(GameStartedEvent $event)
     {
-        $readModel = new GameStatics($event->getGameId(), $event->getWord(), $event->getStartTime());
+
+        $readModel = new GameStatics($event->getGameId(), $event->getWord(), $event->getStartTime()->toString());
         $this->repository->save($readModel);
     }
 
@@ -75,7 +76,7 @@ class GameStaticsProjector extends Projector
     {
         $readModel = $this->repository->find($event->getGameId());
         $readModel->setStatus("Game won!");
-        $readModel->setGameEndTime($event->getExpandedTimeOnGame());
+        $readModel->setGameEndTime($event->getExpandedTimeOnGame()->toString());
         $this->repository->save($readModel);
     }
 
@@ -83,7 +84,7 @@ class GameStaticsProjector extends Projector
     {
         $readModel = $this->repository->find($event->getGameId());
         $readModel->setStatus("Game lost!");
-        $readModel->setGameEndTime($event->getExpandedTimeOnGame());
+        $readModel->setGameEndTime($event->getExpandedTimeOnGame()->toString());
         $this->repository->save($readModel);
     }
 }

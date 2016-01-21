@@ -25,7 +25,7 @@ class LetterGuessedCorrectly extends GameEvent
     {
         parent::__construct($gameId);
 
-        $this->letters = $letters;
+        $this->letters[] = $letters;
     }
 
     /**

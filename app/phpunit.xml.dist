@@ -20,7 +20,7 @@
     </testsuites>
 
     <php>
-        <server name="KERNEL_DIR" value="/home/lennard/Documents/git/hangman_leon/app/" />
+        <server name="KERNEL_DIR" value="/vagrant/backend/app/" />
     </php>
 
     <filter>

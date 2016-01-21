@@ -37,9 +37,11 @@ class GameCommandHandler extends CommandHandler
      */
     public function handleChooseLetter(ChooseLetter $command)
     {
+
         /** @var Game $game */
         $game = $this->repository->load($command->getGameId());
         $game->chooseLetter($command->getGameId(), $command->getLetter());
+
         $this->repository->save($game);
     }
 }

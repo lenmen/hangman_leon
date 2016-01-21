@@ -6,6 +6,7 @@ namespace HangmanBundle\Game\ReadModel;
 use Broadway\ReadModel\ReadModelInterface;
 use HangmanBundle\Models\LetterSaver;
 use HangmanBundle\Models\WordChecker;
+use Broadway\Domain\DateTime;
 
 class GameStatics implements ReadModelInterface
 {
@@ -46,21 +47,21 @@ class GameStatics implements ReadModelInterface
     private $expanededTimeOnGame;
 
     /**
-     * @var \DateTime
+     * @var string
      */
     private $gameStartTime;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $gameEndTime;
 
     /**
      * GameStatics constructor.
-     * @param string $gameId
-     * @param string $word
+     * @param $gameId
+     * @param $word
+     * @param $startTime
      * @param string $status
-     * @param \DateTime $startTime
      */
     public function __construct($gameId, $word, $startTime, $status = "in progress")
     {
@@ -101,6 +102,10 @@ class GameStatics implements ReadModelInterface
      */
     public function setLetterWrongGuessed($letterWrongGuessed)
     {
+        var_dump($this->letterWrongGuessed);
+       //$letterWrongGuessedProperty = unserialize($this->letterWrongGuessed);
+
+
         $this->letterWrongGuessed->addLetterToContainer($letterWrongGuessed);
 
         return $this;
@@ -125,6 +130,11 @@ class GameStatics implements ReadModelInterface
      */
     public function setLetterCorrectlyGuessed($letterCorrectlyGuessed)
     {
+        var_dump($this->letterCorrectlyGuessed);
+//        $letterCorrectlyGuessedPropperty = unserialize($this->letterCorrectlyGuessed);
+//        var_dump($letterCorrectlyGuessedPropperty);
+  //      $this->letterCorrectlyGuessed = $letterCorrectlyGuessedPropperty;
+
         $this->letterCorrectlyGuessed->addLetterToContainer($letterCorrectlyGuessed);
 
         return $this;
@@ -181,7 +191,7 @@ class GameStatics implements ReadModelInterface
     /**
      * Get expanededTimeOnGame
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getExpanededTimeOnGame()
     {
@@ -191,7 +201,7 @@ class GameStatics implements ReadModelInterface
     /**
      * Get gameStartTime
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getGameStartTime()
     {
@@ -201,7 +211,7 @@ class GameStatics implements ReadModelInterface
     /**
      * Set gameEndTime
      *
-     * @param \DateTime $gameEndTime
+     * @param DateTime $gameEndTime
      *
      * @return GameStatics
      */
@@ -215,7 +225,7 @@ class GameStatics implements ReadModelInterface
     /**
      * Get gameEndTime
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getGameEndTime()
     {

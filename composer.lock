@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "608ea7384a513268f548959901a317e6",
-    "content-hash": "178a24ce4587f48212c0fdbbc7031a92",
+    "hash": "ae0165fbc0c1532a3ab042b6755100ab",
+    "content-hash": "fdb37a5f4318334056903fd1d0847f0d",
     "packages": [
         {
             "name": "arvenil/ninja-mutex",
@@ -244,16 +244,16 @@
         },
         {
             "name": "bunny/bunny",
-            "version": "v0.1.5",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakubkulhan/bunny.git",
-                "reference": "8381109e6caefdd0fff9ff84a290aacb335091af"
+                "reference": "b24317eaf5be568c8993df9f89cdaa6d594e6cdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/8381109e6caefdd0fff9ff84a290aacb335091af",
-                "reference": "8381109e6caefdd0fff9ff84a290aacb335091af",
+                "url": "https://api.github.com/repos/jakubkulhan/bunny/zipball/b24317eaf5be568c8993df9f89cdaa6d594e6cdc",
+                "reference": "b24317eaf5be568c8993df9f89cdaa6d594e6cdc",
                 "shasum": ""
             },
             "require": {
@@ -303,7 +303,7 @@
                 "react-php",
                 "reactphp"
             ],
-            "time": "2015-08-31 06:51:25"
+            "time": "2015-12-05 13:26:22"
         },
         {
             "name": "container-interop/container-interop",
@@ -3325,26 +3325,27 @@
         },
         {
             "name": "simgroep/event-sourcing",
-            "version": "0.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simgroep/event-sourcing.git",
-                "reference": "78dba71dab13a408ab1d8f51e11b30c57ef1d9f0"
+                "reference": "9b18fa78d0029e2f5ab07375d730b2431c8b35a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simgroep/event-sourcing/zipball/78dba71dab13a408ab1d8f51e11b30c57ef1d9f0",
-                "reference": "78dba71dab13a408ab1d8f51e11b30c57ef1d9f0",
+                "url": "https://api.github.com/repos/simgroep/event-sourcing/zipball/9b18fa78d0029e2f5ab07375d730b2431c8b35a4",
+                "reference": "9b18fa78d0029e2f5ab07375d730b2431c8b35a4",
                 "shasum": ""
             },
             "require": {
                 "arvenil/ninja-mutex": ">=0.4.0",
                 "broadway/broadway": "~0.5",
-                "bunny/bunny": "^0.1.5",
-                "jurjean/spray-serializer": "dev-master",
-                "jurjean/spray-serializer-bundle": "dev-master",
+                "bunny/bunny": ">=0.1.5",
+                "jurjean/spray-serializer": "2.0.x-dev",
+                "jurjean/spray-serializer-bundle": "1.0.x-dev",
                 "php": ">=5.6.0",
-                "react/child-process": ">=0.4.0"
+                "react/child-process": ">=0.4.0",
+                "symfony/symfony": "2.*"
             },
             "require-dev": {
                 "jurjean/spray-bundle-integration": "dev-master",
@@ -3357,20 +3358,20 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2015-09-17 12:53:01"
+            "time": "2015-12-24 10:44:22"
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "2.5.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "e4fb41d5d0387d556e2c25534d630b3cce90ea67"
+                "reference": "6731851d6aaf1d0d6c58feff1065227b7fda3ba8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/e4fb41d5d0387d556e2c25534d630b3cce90ea67",
-                "reference": "e4fb41d5d0387d556e2c25534d630b3cce90ea67",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6731851d6aaf1d0d6c58feff1065227b7fda3ba8",
+                "reference": "6731851d6aaf1d0d6c58feff1065227b7fda3ba8",
                 "shasum": ""
             },
             "require": {
@@ -3388,7 +3389,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -3434,7 +3435,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2015-12-11 00:12:46"
+            "time": "2016-01-19 23:39:10"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -4006,16 +4007,16 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.3.10",
+            "version": "v2.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/swiftmailer-bundle.git",
-                "reference": "de5a2ddcaf91d2e44c19161e0fe8ed88022ceb51"
+                "reference": "5e1a90f28213231ceee19c953bbebc5b5b95c690"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/de5a2ddcaf91d2e44c19161e0fe8ed88022ceb51",
-                "reference": "de5a2ddcaf91d2e44c19161e0fe8ed88022ceb51",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/5e1a90f28213231ceee19c953bbebc5b5b95c690",
+                "reference": "5e1a90f28213231ceee19c953bbebc5b5b95c690",
                 "shasum": ""
             },
             "require": {
@@ -4059,7 +4060,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2016-01-14 10:25:38"
+            "time": "2016-01-15 16:41:20"
         },
         {
             "name": "symfony/symfony",
@@ -4502,37 +4503,32 @@
         },
         {
             "name": "zendframework/zend-eventmanager",
-            "version": "3.0.0",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-eventmanager.git",
-                "reference": "8c9917f1595ff260f289439bdeb1f46500c65d62"
+                "reference": "b4354f75f694504d32e7d080641854f830acb865"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/8c9917f1595ff260f289439bdeb1f46500c65d62",
-                "reference": "8c9917f1595ff260f289439bdeb1f46500c65d62",
+                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/b4354f75f694504d32e7d080641854f830acb865",
+                "reference": "b4354f75f694504d32e7d080641854f830acb865",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7.0"
+                "php": ">=5.5",
+                "zendframework/zend-stdlib": "~2.5"
             },
             "require-dev": {
-                "athletic/athletic": "^0.1",
-                "container-interop/container-interop": "^1.1.0",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "^2.0",
-                "zendframework/zend-stdlib": "^2.7.3"
-            },
-            "suggest": {
-                "container-interop/container-interop": "^1.1.0, to use the lazy listeners feature",
-                "zendframework/zend-stdlib": "^2.7.3, to use the FilterChain feature"
+                "athletic/athletic": "dev-master",
+                "fabpot/php-cs-fixer": "1.7.*",
+                "phpunit/phpunit": "~4.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev",
-                    "dev-develop": "3.1-dev"
+                    "dev-master": "2.6-dev",
+                    "dev-develop": "3.0-dev"
                 }
             },
             "autoload": {
@@ -4544,15 +4540,12 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "description": "Trigger and listen to events within a PHP application",
             "homepage": "https://github.com/zendframework/zend-eventmanager",
             "keywords": [
-                "event",
                 "eventmanager",
-                "events",
                 "zf2"
             ],
-            "time": "2016-01-12 23:27:48"
+            "time": "2016-01-12 23:08:36"
         },
         {
             "name": "zendframework/zend-hydrator",
@@ -4664,16 +4657,16 @@
         },
         {
             "name": "zendframework/zend-servicemanager",
-            "version": "2.7.3",
+            "version": "2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-servicemanager.git",
-                "reference": "cc65a0a1081bf8e76c7420290fb7a55880236786"
+                "reference": "846f8a4f9c2e438e45d2de5cec11509cb7e08d79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/cc65a0a1081bf8e76c7420290fb7a55880236786",
-                "reference": "cc65a0a1081bf8e76c7420290fb7a55880236786",
+                "url": "https://api.github.com/repos/zendframework/zend-servicemanager/zipball/846f8a4f9c2e438e45d2de5cec11509cb7e08d79",
+                "reference": "846f8a4f9c2e438e45d2de5cec11509cb7e08d79",
                 "shasum": ""
             },
             "require": {
@@ -4712,7 +4705,7 @@
                 "servicemanager",
                 "zf2"
             ],
-            "time": "2016-01-13 19:29:06"
+            "time": "2016-01-19 21:01:21"
         },
         {
             "name": "zendframework/zend-stdlib",
@@ -5058,7 +5051,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "jurjean/spray-serializer-bundle": 20,
-        "jurjean/spray-serializer": 20
+        "jurjean/spray-serializer": 20,
+        "simgroep/event-sourcing": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -68,7 +68,7 @@ class LetterChosen
      *
      * @return LetterChosen
      */
-    public function setCorrectGuessed(boolean $correctGuessed)
+    public function setCorrectGuessed($correctGuessed)
     {
         $this->correctGuessed = $correctGuessed;
 
@@ -92,7 +92,7 @@ class LetterChosen
      *
      * @return LetterChosen
      */
-    public function setMisGuessed(boolean $misGuessed)
+    public function setMisGuessed($misGuessed)
     {
         $this->misGuessed = $misGuessed;
 

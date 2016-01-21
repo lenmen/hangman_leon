@@ -59,9 +59,9 @@ doctrine:
         default_entity_manager: default
         entity_managers:
             default:
-                metadata_cache_driver: array
-                result_cache_driver: array
-                query_cache_driver: array
+#                metadata_cache_driver: array
+#                result_cache_driver: array
+#                query_cache_driver: array
                 connection: default
                 mappings:
                     HangmanBundle:
@@ -88,15 +88,15 @@ fos_rest:
     view:
         view_response_listener: 'force'
 
-jms_serializer:
-    metadata:
-        directories:
-            sim_settings:
-                namespace_prefix: "HangmanBundle"
-                path: "@HangmanBundle/Resources/config/serializer"
-    visitors:
-        json:
-            options: JSON_PRETTY_PRINT
+#jms_serializer:
+#    metadata:
+#        directories:
+#            sim_settings:
+#                namespace_prefix: "HangmanBundle"
+#                path: "@HangmanBundle/Resources/config/serializer"
+#    visitors:
+#        json:
+#            options: JSON_PRETTY_PRINT
 
 
 broadway:
@@ -105,5 +105,3 @@ broadway:
     saga:
         mongodb:
             storage_suffix: "_%kernel.environment%"
-
-bazinga_faker: ~

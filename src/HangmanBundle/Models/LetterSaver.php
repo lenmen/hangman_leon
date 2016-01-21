@@ -27,16 +27,6 @@ class LetterSaver
     }
 
     /**
-     * @param string $letter
-     * @return $this
-     */
-    public function addLetterToContainer($letter)
-    {
-        $this->lettersContainer->add($letter);
-        return $this;
-    }
-
-    /**
      * @param int $key
      * @param string $letter
      * @return $this
@@ -44,6 +34,12 @@ class LetterSaver
     public function addLetterWithKeyToContainer($key, $letter)
     {
         $this->lettersContainer->set($key, $letter);
+        return $this;
+    }
+
+    public function addLetterToContainer($letter)
+    {
+        $this->lettersContainer->add($letter);
         return $this;
     }
 
@@ -70,6 +66,6 @@ class LetterSaver
 
     public function __toString()
     {
-        return "letter";
+        return serialize($this->lettersContainer->toArray());
     }
 }
