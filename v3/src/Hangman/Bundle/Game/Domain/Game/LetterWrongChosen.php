@@ -1,15 +1,15 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: lennardmoll
- * Date: 21/01/16
- * Time: 23:38
+ * User: lennard
+ * Date: 22-1-16
+ * Time: 12:00
  */
 
-namespace Hangman\Bundle\Game\Application\Commands;
+namespace Hangman\Bundle\Game\Domain\Game;
 
 
-class ChooseLetter
+class LetterWrongChosen
 {
     /**
      * @var string
@@ -22,7 +22,7 @@ class ChooseLetter
     private $letter;
 
     /**
-     * ChooseLetter constructor.
+     * LetterWrongChosen constructor.
      * @param string $gameId
      * @param string $letter
      */

@@ -13,13 +13,29 @@ use Broadway\CommandHandling\Testing\CommandHandlerScenarioTestCase;
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
+use Hangman\Bundle\Game\Application\Commands\ChooseLetter;
 use Hangman\Bundle\Game\Application\Commands\StartGame;
 use Hangman\Bundle\Game\Application\GameCommandHandler;
 use Hangman\Bundle\Game\Domain\Game\GameRepository;
 use Hangman\Bundle\Game\Domain\Game\GameStarted;
+use Hangman\Bundle\Game\Domain\Game\GameWon;
+use Hangman\Bundle\Game\Domain\Game\LetterCorrectlyChosen;
+use Hangman\Bundle\Game\Domain\Game\LetterWrongChosen;
 
 class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
 {
+    /**
+     * @var Version4Generator
+     */
+    private $generator;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->generator = new Version4Generator();
+    }
+
     /**
      * @param EventStoreInterface $eventStore
      * @param EventBusInterface $eventBus
@@ -37,9 +53,7 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
      */
     public function it_can_create_a_game()
     {
-        $generator = new Version4Generator();
-
-        $uuid = $generator->generate();
+        $uuid = $this->generator->generate();
         $word = "test";
 
         $this->scenario
@@ -66,4 +80,61 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
 
             ]);
     }
+
+    /**
+     * @test
+     */
+    public function it_can_choose_a_correct_letter()
+    {
+        $uuid = $this->generator->generate();
+        $word = "test";
+
+        $this->scenario
+            ->withAggregateId($uuid)
+            ->given([new GameStarted($uuid, $word)])
+            ->when(new ChooseLetter($uuid, 't'))
+            ->then([
+                new LetterCorrectlyChosen($uuid, 't')
+            ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_choose_a_wrong_letter()
+    {
+        $uuid = $this->generator->generate();
+        $word = "test";
+
+        $this->scenario
+            ->withAggregateId($uuid)
+            ->given([new GameStarted($uuid, $word)])
+            ->when(new ChooseLetter($uuid, 'p'))
+            ->then([
+                new LetterWrongChosen($uuid, 'p')
+            ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_win_a_game()
+    {
+        $uuid = $this->generator->generate();
+        $word = "test";
+
+        $this->scenario
+            ->withAggregateId($uuid)
+            ->given([
+                new GameStarted($uuid, $word),
+                new LetterCorrectlyChosen($uuid, 't'),
+                new LetterCorrectlyChosen($uuid, 'e')
+            ])
+            ->when(new ChooseLetter($uuid, 's'))
+            ->then([
+                new LetterCorrectlyChosen($uuid, 's'),
+                new GameWon($uuid)
+            ]);
+    }
+
 }
