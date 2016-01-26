@@ -101,6 +101,12 @@ class Game extends EventSourcedAggregateRoot
             return;
         }
 
+        $regexp = "/^[a-z]$/";
+
+        if(!preg_match($regexp, $letter)) {
+            return;
+        }
+
         // Check if letter already has submitted
         if ($this->lettersCorrectChosen->LetterExistsInContainer($letter) || $this->lettersWrongChosen->LetterExistsInContainer($letter)) {
             // Throw wrong guest event
