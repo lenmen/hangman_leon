@@ -1,0 +1,31 @@
+Hangman\Bundle\Game\ReadModel\Game:
+    type: entity
+    table: game
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id
+            generator:
+                strategy: IDENTITY
+        gameId:
+            type: string
+            length: 50
+            nullable: false
+        word:
+            type: string
+            length: 50
+            nullable: false
+        letterGuessedCorrectly:
+            type: json_array
+            nullable: true
+        letterWrongGuessed:
+            type: json_array
+            nullable: true
+        gameWon:
+            type: boolean
+        gameLost:
+            type: boolean
+    lifecycleCallbacks: {}

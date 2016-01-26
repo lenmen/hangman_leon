@@ -9,17 +9,20 @@
 namespace Hangman\Bundle\Services;
 
 use Broadway\Serializer\SerializableInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 
-class LetterService extends ArrayCollection implements SerializableInterface
+class LetterService implements SerializableInterface
 {
+    /**
+     * @var array
+     */
+    private $data;
     /**
      * LetterService constructor.
      * @param array $elements
      */
     public function __construct(array $elements = [])
     {
-        parent::__construct($elements);
+        $this->data = $elements;
     }
 
     /**
@@ -29,8 +32,26 @@ class LetterService extends ArrayCollection implements SerializableInterface
      */
     public function addLetterWithKeyToContainer($key, $letter)
     {
-        parent::set($key, $letter);
+        $this->data[$key] = $letter;
         return $this;
+    }
+
+    /**
+     * @param string $val
+     * @return $this
+     */
+    public function add($val)
+    {
+        $this->data[] = $val;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
     }
 
     /**
@@ -39,21 +60,21 @@ class LetterService extends ArrayCollection implements SerializableInterface
      */
     public function LetterExistsInContainer($letter)
     {
-        return in_array($letter,parent::getValues());
+        return in_array($letter,$this->data);
     }
 
     /**
      * @return int
      */
     public function lengthOfContainer() {
-        return count(parent::toArray());
+        return count($this->data);
     }
 
     /**
      * @return string
      */
     public function convertArrayToString() {
-        $lettersArray = parent::toArray();
+        $lettersArray = $this->data;
         $letters = '';
         ksort($lettersArray);
 
@@ -65,18 +86,13 @@ class LetterService extends ArrayCollection implements SerializableInterface
 
     }
 
-    public function __toString()
-    {
-       return $this->serialize();
-    }
-
     /**
      * @param array $data
      * @return LetterService
      */
     public static function deserialize(array $data)
     {
-        return new self($data);
+        return new self($data["values"]);
     }
 
     /**
@@ -85,10 +101,10 @@ class LetterService extends ArrayCollection implements SerializableInterface
     public function serialize()
     {
         // Serialize all elemenets of Array Collection as an array
-        $data = parent::toArray();
+        $data = [
+            "values" => $this->data
+        ];
 
-        return serialize($data);
+        return $data;
     }
-
-
 }

@@ -85,24 +85,6 @@ class LetterServiceTest extends WebTestCase
     /**
      * @test
      */
-    public function it_can_be_serialized_and_unserialized()
-    {
-        $this->letterService->addLetterWithKeyToContainer('test', 'lol');
-        $serialized = (string) $this->letterService;
-
-        $unserialize = $this->letterService->deserialize(unserialize($serialized));
-        $succeed = false;
-
-        if ($unserialize !== false) {
-            $succeed = true;
-        }
-
-        $this->assertTrue($succeed);
-    }
-
-    /**
-     * @test
-     */
     public function it_can_convert_to_string()
     {
         $word = "test";

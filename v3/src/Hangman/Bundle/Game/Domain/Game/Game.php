@@ -97,6 +97,10 @@ class Game extends EventSourcedAggregateRoot
     }
 
     public function chooseLetter($letter) {
+        if($this->gameIsWon || $this->gameIsLost) {
+            return;
+        }
+
         // Check if letter already has submitted
         if ($this->lettersCorrectChosen->LetterExistsInContainer($letter) || $this->lettersWrongChosen->LetterExistsInContainer($letter)) {
             // Throw wrong guest event
@@ -152,6 +156,7 @@ class Game extends EventSourcedAggregateRoot
     public function applyLetterWrongChosen(LetterWrongChosen $event)
     {
         $this->lettersWrongChosen->add($event->getLetter());
+        $this->tries->removeATry();
     }
 
     /**
@@ -174,7 +179,7 @@ class Game extends EventSourcedAggregateRoot
 
         while(($lastPost = strpos($this->word, $letter, $pos)) !== false) {
             $data[$lastPost] = $letter;
-            $pos = $lastPost;
+            $pos = $lastPost + 1;
         }
 
         // return false if array is empty

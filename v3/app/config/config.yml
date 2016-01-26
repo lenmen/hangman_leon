@@ -56,19 +56,19 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         default_entity_manager: default
-#        entity_managers:
-#            default:
-#                metadata_cache_driver: array
-#                result_cache_driver: array
-#                query_cache_driver: array
-#                connection: default
-#                mappings:
-#                    HangmanBundle:
-#                        type: yml
-#                        dir: ./Game/Infrastructure/Doctrine
-#                        prefix: "HangmanBundle"
-#                        alias: HangmanApplication
-#                        is_bundle: true
+        entity_managers:
+            default:
+                metadata_cache_driver: array
+                result_cache_driver: array
+                query_cache_driver: array
+                connection: default
+                mappings:
+                    HangmanBundle:
+                        type: yml
+                        dir: ./Game/Infrastructure/Doctrine
+                        prefix: "Hangman\Bundle"
+                        alias: HangmanApplication
+                        is_bundle: true
 
 # Swiftmailer Configuration
 swiftmailer:

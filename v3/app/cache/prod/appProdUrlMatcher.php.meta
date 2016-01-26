@@ -1,0 +1,1 @@
+a:3:{i:0;C:46:"Symfony\Component\Config\Resource\FileResource":39:{s:31:"/vagrant/app/config/routing.yml";}i:1;C:46:"Symfony\Component\Config\Resource\FileResource":64:{s:56:"/vagrant/src/Hangman/Bundle/Resources/config/routing.yml";}i:2;C:46:"Symfony\Component\Config\Resource\FileResource":65:{s:57:"/vagrant/src/Hangman/Bundle/Controller/GameController.php";}}

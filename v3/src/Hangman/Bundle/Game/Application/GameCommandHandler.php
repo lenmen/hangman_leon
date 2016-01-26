@@ -44,5 +44,6 @@ class GameCommandHandler extends CommandHandler
     {
         $game = $this->repository->load($command->getGameId());
         $game->chooseLetter($command->getLetter());
+        $this->repository->save($game);
     }
 }

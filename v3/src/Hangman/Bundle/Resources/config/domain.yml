@@ -7,7 +7,21 @@ services:
       - [ @broadway.metadata_enriching_event_stream_decorator ]
 
   hangman.game.handler:
-    class: Hangman\Bundle\Game\Application\GammeCommandHandler
+    class: Hangman\Bundle\Game\Application\GameCommandHandler
     arguments: ["@hangman.event.repo"]
     tags:
       - { name: command_handler }
+
+  hangman.game.read_model_repository:
+    class: Hangman\Bundle\Game\ReadModel\Doctrine\DoctrineRepository
+    arguments:
+      - @doctrine.orm.entity_manager
+      - "Hangman\Bundle\Game\ReadModel\Game"
+
+  hangman.game.projector:
+    class: Hangman\Bundle\Game\ReadModel\GameProjector
+    arguments:
+      - @hangman.game.read_model_repository
+    tags:
+      - { name: broadway.domain.event_listener }
+      - { name: projector.replayable, repository: hangman.game.read_model_repository }

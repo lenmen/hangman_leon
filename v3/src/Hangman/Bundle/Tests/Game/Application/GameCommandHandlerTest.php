@@ -94,7 +94,7 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
             ->given([new GameStarted($uuid, $word)])
             ->when(new ChooseLetter($uuid, 't'))
             ->then([
-                new LetterCorrectlyChosen($uuid, 't')
+                new LetterCorrectlyChosen($uuid, [0 => 't', 3 => 't'])
             ]);
     }
 
@@ -127,13 +127,33 @@ class GameCommandHandlerTest extends CommandHandlerScenarioTestCase
             ->withAggregateId($uuid)
             ->given([
                 new GameStarted($uuid, $word),
-                new LetterCorrectlyChosen($uuid, 't'),
-                new LetterCorrectlyChosen($uuid, 'e')
+                new LetterCorrectlyChosen($uuid, [0 => 't', 3 => 't']),
+                new LetterCorrectlyChosen($uuid, [1 => 'e'])
             ])
             ->when(new ChooseLetter($uuid, 's'))
             ->then([
-                new LetterCorrectlyChosen($uuid, 's'),
+                new LetterCorrectlyChosen($uuid, [2 => 's']),
                 new GameWon($uuid)
+            ]);
+    }
+
+    /**
+     * @test
+     */
+    public function its_a_wrong_letter_when_same_letter_given_twice()
+    {
+        $uuid = $this->generator->generate();
+        $word = "test";
+
+        $this->scenario
+            ->withAggregateId($uuid)
+            ->given([
+                new GameStarted($uuid, $word),
+                new LetterCorrectlyChosen($uuid, [0 => 't', 2 => 't'])
+            ])
+            ->when(new ChooseLetter($uuid, 't'))
+            ->then([
+                new LetterWrongChosen($uuid, 't')
             ]);
     }
 

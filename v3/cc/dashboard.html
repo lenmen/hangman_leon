@@ -59,13 +59,17 @@
        </thead>
        <tbody>
        <tr><td><a href="Game/Domain/Game/GameLost.php.html#14">GameLost</a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/LetterWrongChosen.php.html#12">LetterWrongChosen</a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="Controller/DefaultController.php.html#7">DefaultController</a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Application/Commands/ChooseLetter.php.html#12">ChooseLetter</a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="DependencyInjection/Configuration.php.html#13">Configuration</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#8">DoctrineRepository</a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="DependencyInjection/HangmanExtension.php.html#15">HangmanExtension</a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#18">Game</a></td><td class="text-right">30%</td></tr>
-       <tr><td><a href="Game/Application/GameCommandHandler.php.html#18">GameCommandHandler</a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="DependencyInjection/Configuration.php.html#13">Configuration</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/GameProjector.php.html#21">GameProjector</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#11">Game</a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="Services/TryService.php.html#14">TryService</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Game/Domain/Game/GameWon.php.html#14">GameWon</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Game/Domain/Game/LetterWrongChosen.php.html#12">LetterWrongChosen</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Game/Domain/Game/LetterCorrectlyChosen.php.html#12">LetterCorrectlyChosen</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Services/LetterService.php.html#14">LetterService</a></td><td class="text-right">81%</td></tr>
 
        </tbody>
       </table>
@@ -82,7 +86,9 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#18">Game</a></td><td class="text-right">81</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#11">Game</a></td><td class="text-right">114</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#8">DoctrineRepository</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Services/LetterService.php.html#14">LetterService</a></td><td class="text-right">8</td></tr>
 
        </tbody>
       </table>
@@ -120,23 +126,46 @@
         </tr>
        </thead>
        <tbody>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#58"><abbr title="DoctrineRepository::findAll">findAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#67"><abbr title="DoctrineRepository::remove">remove</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#80"><abbr title="DoctrineRepository::removeReadModel">removeReadModel</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#89"><abbr title="DoctrineRepository::removeAll">removeAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#50"><abbr title="DoctrineRepository::findBy">findBy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#42"><abbr title="DoctrineRepository::find">find</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/Domain/Game/LetterWrongChosen.php.html#38"><abbr title="LetterWrongChosen::getGameId">getGameId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#24"><abbr title="DoctrineRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#33"><abbr title="DoctrineRepository::save">save</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/GameProjector.php.html#28"><abbr title="GameProjector::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/GameProjector.php.html#36"><abbr title="GameProjector::applyGameStarted">applyGameStarted</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LetterService.php.html#80"><abbr title="LetterService::serialize">serialize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/TryService.php.html#67"><abbr title="TryService::deserialize">deserialize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/TryService.php.html#75"><abbr title="TryService::serialize">serialize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/LetterService.php.html#72"><abbr title="LetterService::deserialize">deserialize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/GameProjector.php.html#75"><abbr title="GameProjector::applyGameLost">applyGameLost</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/GameProjector.php.html#45"><abbr title="GameProjector::applyLetterGuessedCorrectly">applyLetterGuessedCorrectly</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/GameProjector.php.html#60"><abbr title="GameProjector::applyWrongLetterGuessed">applyWrongLetterGuessed</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/GameProjector.php.html#68"><abbr title="GameProjector::applyGameWon">applyGameWon</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/Domain/Game/LetterCorrectlyChosen.php.html#38"><abbr title="LetterCorrectlyChosen::getGameId">getGameId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/Domain/Game/GameWon.php.html#39"><abbr title="GameWon::getGameId">getGameId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#106"><abbr title="Game::getWord">getWord</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#118"><abbr title="Game::setLetterWrongGuessed">setLetterWrongGuessed</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#130"><abbr title="Game::getLetterWrongGuessed">getLetterWrongGuessed</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#142"><abbr title="Game::setLetterCorrectlyGuessed">setLetterCorrectlyGuessed</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#96"><abbr title="Game::getGameId">getGameId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#84"><abbr title="Game::setGameId">setGameId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DependencyInjection/Configuration.php.html#18"><abbr title="Configuration::getConfigTreeBuilder">getConfigTreeBuilder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DependencyInjection/HangmanExtension.php.html#20"><abbr title="HangmanExtension::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#72"><abbr title="Game::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#156"><abbr title="Game::getLetterCorrectlyGuessed">getLetterCorrectlyGuessed</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#168"><abbr title="Game::setGameStatus">setGameStatus</abbr></a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="Game/Domain/Game/GameLost.php.html#30"><abbr title="GameLost::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#163"><abbr title="Game::throwGameLostIfConditionIsTrue">throwGameLostIfConditionIsTrue</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#142"><abbr title="Game::findKeysInWord">findKeysInWord</abbr></a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="Game/Domain/Game/GameLost.php.html#39"><abbr title="GameLost::getGameId">getGameId</abbr></a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="Game/Domain/Game/GameLost.php.html#47"><abbr title="GameLost::getGameEndedAt">getGameEndedAt</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/LetterWrongChosen.php.html#46"><abbr title="LetterWrongChosen::getLetter">getLetter</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/LetterWrongChosen.php.html#38"><abbr title="LetterWrongChosen::getGameId">getGameId</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/LetterWrongChosen.php.html#29"><abbr title="LetterWrongChosen::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#132"><abbr title="Game::applyGameLost">applyGameLost</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#124"><abbr title="Game::applyLetterWrongChosen">applyLetterWrongChosen</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Application/Commands/ChooseLetter.php.html#29"><abbr title="ChooseLetter::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="DependencyInjection/HangmanExtension.php.html#20"><abbr title="HangmanExtension::load">load</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="DependencyInjection/Configuration.php.html#18"><abbr title="Configuration::getConfigTreeBuilder">getConfigTreeBuilder</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Application/Commands/ChooseLetter.php.html#38"><abbr title="ChooseLetter::getGameId">getGameId</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Application/Commands/ChooseLetter.php.html#46"><abbr title="ChooseLetter::getLetter">getLetter</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#99"><abbr title="Game::chooseLetter">chooseLetter</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="Game/Application/GameCommandHandler.php.html#43"><abbr title="GameCommandHandler::handleChooseLetter">handleChooseLetter</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#206"><abbr title="Game::setGameLost">setGameLost</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#201"><abbr title="Game::getGameLost">getGameLost</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#180"><abbr title="Game::getGameStatus">getGameStatus</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#188"><abbr title="Game::getGameWon">getGameWon</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#193"><abbr title="Game::setGameWon">setGameWon</abbr></a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="Controller/DefaultController.php.html#9"><abbr title="DefaultController::indexAction">indexAction</abbr></a></td><td class="text-right">0%</td></tr>
 
        </tbody>
@@ -154,9 +183,9 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#99"><abbr title="Game::chooseLetter">chooseLetter</abbr></a></td><td class="text-right">20</td></tr>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#142"><abbr title="Game::findKeysInWord">findKeysInWord</abbr></a></td><td class="text-right">12</td></tr>
-       <tr><td><a href="Game/Domain/Game/Game.php.html#163"><abbr title="Game::throwGameLostIfConditionIsTrue">throwGameLostIfConditionIsTrue</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#89"><abbr title="DoctrineRepository::removeAll">removeAll</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Game/ReadModel/Doctrine/DoctrineRepository.php.html#67"><abbr title="DoctrineRepository::remove">remove</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Game/ReadModel/Game.php.html#142"><abbr title="Game::setLetterCorrectlyGuessed">setLetterCorrectlyGuessed</abbr></a></td><td class="text-right">6</td></tr>
 
        </tbody>
       </table>
@@ -166,7 +195,7 @@
    <footer>
     <hr/>
     <p>
-     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 3.1.0</a> using <a href="http://php.net/" target="_top">PHP 5.6.17-1+deb.sury.org~trusty+2</a> and <a href="https://phpunit.de/">PHPUnit 5.1.4</a> at Fri Jan 22 12:08:31 UTC 2016.</small>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 3.1.0</a> using <a href="http://php.net/" target="_top">PHP 5.6.17-1+deb.sury.org~trusty+2</a> and <a href="https://phpunit.de/">PHPUnit 5.1.4</a> at Mon Jan 25 8:49:50 UTC 2016.</small>
     </p>
    </footer>
   </div>
@@ -187,7 +216,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([6,0,0,0,1,0,0,0,1,0,0,6], "Class Coverage"))
+      .datum(getCoverageDistributionData([6,0,0,0,1,0,0,1,0,4,0,7], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -205,7 +234,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([18,0,0,0,0,0,0,0,0,0,0,29], "Method Coverage"))
+      .datum(getCoverageDistributionData([41,0,0,0,0,0,0,0,0,0,0,33], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -255,7 +284,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[0,1,"<a href=\"Controller\/DefaultController.php.html#7\">DefaultController<\/a>"],[0,1,"<a href=\"DependencyInjection\/Configuration.php.html#13\">Configuration<\/a>"],[0,1,"<a href=\"DependencyInjection\/HangmanExtension.php.html#15\">HangmanExtension<\/a>"],[0,3,"<a href=\"Game\/Application\/Commands\/ChooseLetter.php.html#12\">ChooseLetter<\/a>"],[100,3,"<a href=\"Game\/Application\/Commands\/StartGame.php.html#12\">StartGame<\/a>"],[71.428571428571,3,"<a href=\"Game\/Application\/GameCommandHandler.php.html#18\">GameCommandHandler<\/a>"],[30,14,"<a href=\"Game\/Domain\/Game\/Game.php.html#18\">Game<\/a>"],[0,3,"<a href=\"Game\/Domain\/Game\/GameLost.php.html#14\">GameLost<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameRepository.php.html#17\">GameRepository<\/a>"],[100,4,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#14\">GameStarted<\/a>"],[0,3,"<a href=\"Game\/Domain\/Game\/LetterWrongChosen.php.html#12\">LetterWrongChosen<\/a>"],[100,0,"<a href=\"HangmanBundle.php.html#7\">HangmanBundle<\/a>"],[100,9,"<a href=\"Services\/LetterService.php.html#14\">LetterService<\/a>"],[100,8,"<a href=\"Services\/TryService.php.html#14\">TryService<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[0,1,"<a href=\"Controller\/DefaultController.php.html#7\">DefaultController<\/a>"],[100,0,"<a href=\"Controller\/GameController.php.html#12\">GameController<\/a>"],[0,1,"<a href=\"DependencyInjection\/Configuration.php.html#13\">Configuration<\/a>"],[0,1,"<a href=\"DependencyInjection\/HangmanExtension.php.html#15\">HangmanExtension<\/a>"],[100,3,"<a href=\"Game\/Application\/Commands\/ChooseLetter.php.html#12\">ChooseLetter<\/a>"],[100,3,"<a href=\"Game\/Application\/Commands\/StartGame.php.html#12\">StartGame<\/a>"],[100,3,"<a href=\"Game\/Application\/GameCommandHandler.php.html#18\">GameCommandHandler<\/a>"],[33.333333333333,18,"<a href=\"Game\/ReadModel\/Game.php.html#11\">Game<\/a>"],[0,3,"<a href=\"Game\/Domain\/Game\/GameLost.php.html#14\">GameLost<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameRepository.php.html#17\">GameRepository<\/a>"],[100,4,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#14\">GameStarted<\/a>"],[80,3,"<a href=\"Game\/Domain\/Game\/GameWon.php.html#14\">GameWon<\/a>"],[80,3,"<a href=\"Game\/Domain\/Game\/LetterCorrectlyChosen.php.html#12\">LetterCorrectlyChosen<\/a>"],[80,3,"<a href=\"Game\/Domain\/Game\/LetterWrongChosen.php.html#12\">LetterWrongChosen<\/a>"],[0,10,"<a href=\"Game\/ReadModel\/Doctrine\/DoctrineRepository.php.html#8\">DoctrineRepository<\/a>"],[0,6,"<a href=\"Game\/ReadModel\/GameProjector.php.html#21\">GameProjector<\/a>"],[100,0,"<a href=\"HangmanBundle.php.html#7\">HangmanBundle<\/a>"],[81.25,8,"<a href=\"Services\/LetterService.php.html#14\">LetterService<\/a>"],[66.666666666667,7,"<a href=\"Services\/TryService.php.html#14\">TryService<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -279,7 +308,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[0,1,"<a href=\"Controller\/DefaultController.php.html#9\">DefaultController::indexAction<\/a>"],[0,1,"<a href=\"DependencyInjection\/Configuration.php.html#18\">Configuration::getConfigTreeBuilder<\/a>"],[0,1,"<a href=\"DependencyInjection\/HangmanExtension.php.html#20\">HangmanExtension::load<\/a>"],[0,1,"<a href=\"Game\/Application\/Commands\/ChooseLetter.php.html#29\">ChooseLetter::__construct<\/a>"],[0,1,"<a href=\"Game\/Application\/Commands\/ChooseLetter.php.html#38\">ChooseLetter::getGameId<\/a>"],[0,1,"<a href=\"Game\/Application\/Commands\/ChooseLetter.php.html#46\">ChooseLetter::getLetter<\/a>"],[100,1,"<a href=\"Game\/Application\/Commands\/StartGame.php.html#29\">StartGame::__construct<\/a>"],[100,1,"<a href=\"Game\/Application\/Commands\/StartGame.php.html#38\">StartGame::getGameId<\/a>"],[100,1,"<a href=\"Game\/Application\/Commands\/StartGame.php.html#46\">StartGame::getWord<\/a>"],[100,1,"<a href=\"Game\/Application\/GameCommandHandler.php.html#29\">GameCommandHandler::__construct<\/a>"],[100,1,"<a href=\"Game\/Application\/GameCommandHandler.php.html#37\">GameCommandHandler::handleStartGame<\/a>"],[0,1,"<a href=\"Game\/Application\/GameCommandHandler.php.html#43\">GameCommandHandler::handleChooseLetter<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/Game.php.html#68\">Game::getAggregateRootId<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/Game.php.html#78\">Game::startGame<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/Game.php.html#89\">Game::applyGameStarted<\/a>"],[0,4,"<a href=\"Game\/Domain\/Game\/Game.php.html#99\">Game::chooseLetter<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/Game.php.html#124\">Game::applyLetterWrongChosen<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/Game.php.html#132\">Game::applyGameLost<\/a>"],[0,3,"<a href=\"Game\/Domain\/Game\/Game.php.html#142\">Game::findKeysInWord<\/a>"],[0,2,"<a href=\"Game\/Domain\/Game\/Game.php.html#163\">Game::throwGameLostIfConditionIsTrue<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/GameLost.php.html#30\">GameLost::__construct<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/GameLost.php.html#39\">GameLost::getGameId<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/GameLost.php.html#47\">GameLost::getGameEndedAt<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameRepository.php.html#19\">GameRepository::__construct<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#36\">GameStarted::__construct<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#46\">GameStarted::getGameId<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#54\">GameStarted::getWord<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#62\">GameStarted::getGameStartedAt<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/LetterWrongChosen.php.html#29\">LetterWrongChosen::__construct<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/LetterWrongChosen.php.html#38\">LetterWrongChosen::getGameId<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/LetterWrongChosen.php.html#46\">LetterWrongChosen::getLetter<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#20\">LetterService::__construct<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#30\">LetterService::addLetterWithKeyToContainer<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#40\">LetterService::LetterExistsInContainer<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#48\">LetterService::lengthOfContainer<\/a>"],[100,2,"<a href=\"Services\/LetterService.php.html#55\">LetterService::convertArrayToString<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#68\">LetterService::__toString<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#77\">LetterService::deserialize<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#85\">LetterService::serialize<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#25\">TryService::__construct<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#34\">TryService::init<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#43\">TryService::getTries<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#51\">TryService::removeATry<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#59\">TryService::notifyIfNoTriesLeft<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#66\">TryService::__toString<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#75\">TryService::deserialize<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#83\">TryService::serialize<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[0,1,"<a href=\"Controller\/DefaultController.php.html#9\">DefaultController::indexAction<\/a>"],[0,1,"<a href=\"DependencyInjection\/Configuration.php.html#18\">Configuration::getConfigTreeBuilder<\/a>"],[0,1,"<a href=\"DependencyInjection\/HangmanExtension.php.html#20\">HangmanExtension::load<\/a>"],[100,1,"<a href=\"Game\/Application\/Commands\/ChooseLetter.php.html#29\">ChooseLetter::__construct<\/a>"],[100,1,"<a href=\"Game\/Application\/Commands\/ChooseLetter.php.html#38\">ChooseLetter::getGameId<\/a>"],[100,1,"<a href=\"Game\/Application\/Commands\/ChooseLetter.php.html#46\">ChooseLetter::getLetter<\/a>"],[100,1,"<a href=\"Game\/Application\/Commands\/StartGame.php.html#29\">StartGame::__construct<\/a>"],[100,1,"<a href=\"Game\/Application\/Commands\/StartGame.php.html#38\">StartGame::getGameId<\/a>"],[100,1,"<a href=\"Game\/Application\/Commands\/StartGame.php.html#46\">StartGame::getWord<\/a>"],[100,1,"<a href=\"Game\/Application\/GameCommandHandler.php.html#29\">GameCommandHandler::__construct<\/a>"],[100,1,"<a href=\"Game\/Application\/GameCommandHandler.php.html#37\">GameCommandHandler::handleStartGame<\/a>"],[100,1,"<a href=\"Game\/Application\/GameCommandHandler.php.html#43\">GameCommandHandler::handleChooseLetter<\/a>"],[100,1,"<a href=\"Game\/ReadModel\/Game.php.html#58\">Game::__construct<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#72\">Game::getId<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#84\">Game::setGameId<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#96\">Game::getGameId<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#106\">Game::getWord<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#118\">Game::setLetterWrongGuessed<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#130\">Game::getLetterWrongGuessed<\/a>"],[0,2,"<a href=\"Game\/ReadModel\/Game.php.html#142\">Game::setLetterCorrectlyGuessed<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#156\">Game::getLetterCorrectlyGuessed<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#168\">Game::setGameStatus<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#180\">Game::getGameStatus<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#188\">Game::getGameWon<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#193\">Game::setGameWon<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#201\">Game::getGameLost<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Game.php.html#206\">Game::setGameLost<\/a>"],[100,1,"<a href=\"Game\/ReadModel\/Game.php.html#211\">Game::deserialize<\/a>"],[100,1,"<a href=\"Game\/ReadModel\/Game.php.html#216\">Game::serialize<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/GameLost.php.html#30\">GameLost::__construct<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/GameLost.php.html#39\">GameLost::getGameId<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/GameLost.php.html#47\">GameLost::getGameEndedAt<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameRepository.php.html#19\">GameRepository::__construct<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#36\">GameStarted::__construct<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#46\">GameStarted::getGameId<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#54\">GameStarted::getWord<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameStarted.php.html#62\">GameStarted::getGameStartedAt<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameWon.php.html#30\">GameWon::__construct<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/GameWon.php.html#39\">GameWon::getGameId<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/GameWon.php.html#47\">GameWon::getGameEndedAt<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/LetterCorrectlyChosen.php.html#29\">LetterCorrectlyChosen::__construct<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/LetterCorrectlyChosen.php.html#38\">LetterCorrectlyChosen::getGameId<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/LetterCorrectlyChosen.php.html#46\">LetterCorrectlyChosen::getLetters<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/LetterWrongChosen.php.html#29\">LetterWrongChosen::__construct<\/a>"],[0,1,"<a href=\"Game\/Domain\/Game\/LetterWrongChosen.php.html#38\">LetterWrongChosen::getGameId<\/a>"],[100,1,"<a href=\"Game\/Domain\/Game\/LetterWrongChosen.php.html#46\">LetterWrongChosen::getLetter<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Doctrine\/DoctrineRepository.php.html#24\">DoctrineRepository::__construct<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Doctrine\/DoctrineRepository.php.html#33\">DoctrineRepository::save<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Doctrine\/DoctrineRepository.php.html#42\">DoctrineRepository::find<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Doctrine\/DoctrineRepository.php.html#50\">DoctrineRepository::findBy<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Doctrine\/DoctrineRepository.php.html#58\">DoctrineRepository::findAll<\/a>"],[0,2,"<a href=\"Game\/ReadModel\/Doctrine\/DoctrineRepository.php.html#67\">DoctrineRepository::remove<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/Doctrine\/DoctrineRepository.php.html#80\">DoctrineRepository::removeReadModel<\/a>"],[0,2,"<a href=\"Game\/ReadModel\/Doctrine\/DoctrineRepository.php.html#89\">DoctrineRepository::removeAll<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/GameProjector.php.html#28\">GameProjector::__construct<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/GameProjector.php.html#36\">GameProjector::applyGameStarted<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/GameProjector.php.html#45\">GameProjector::applyLetterGuessedCorrectly<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/GameProjector.php.html#60\">GameProjector::applyWrongLetterGuessed<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/GameProjector.php.html#68\">GameProjector::applyGameWon<\/a>"],[0,1,"<a href=\"Game\/ReadModel\/GameProjector.php.html#75\">GameProjector::applyGameLost<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#20\">LetterService::__construct<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#30\">LetterService::addLetterWithKeyToContainer<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#40\">LetterService::LetterExistsInContainer<\/a>"],[100,1,"<a href=\"Services\/LetterService.php.html#48\">LetterService::lengthOfContainer<\/a>"],[100,2,"<a href=\"Services\/LetterService.php.html#55\">LetterService::convertArrayToString<\/a>"],[0,1,"<a href=\"Services\/LetterService.php.html#72\">LetterService::deserialize<\/a>"],[0,1,"<a href=\"Services\/LetterService.php.html#80\">LetterService::serialize<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#25\">TryService::__construct<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#34\">TryService::init<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#43\">TryService::getTries<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#51\">TryService::removeATry<\/a>"],[100,1,"<a href=\"Services\/TryService.php.html#59\">TryService::notifyIfNoTriesLeft<\/a>"],[0,1,"<a href=\"Services\/TryService.php.html#67\">TryService::deserialize<\/a>"],[0,1,"<a href=\"Services\/TryService.php.html#75\">TryService::serialize<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);

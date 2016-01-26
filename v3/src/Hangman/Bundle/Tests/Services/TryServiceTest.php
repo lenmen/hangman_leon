@@ -63,24 +63,6 @@ class TryServiceTest extends WebTestCase
     /**
      * @test
      */
-     public function it_can_serialize_and_unserialize()
-     {
-         $serialized = (string) TryService::init();
-         $object = TryService::init();
-         $unserialized = $object->deserialize(unserialize($object));
-         $succeed = false;
-
-         if ($unserialized !== false) {
-             $succeed = true;
-         }
-
-         $this->assertTrue($succeed);
-         $this->assertTrue(is_a($unserialized, TryService::class));
-     }
-
-    /**
-     * @test
-     */
     public function it_can_notify_if_no_tries_left()
     {
         $tries = TryService::init(1);

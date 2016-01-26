@@ -31,7 +31,7 @@ class TryService implements SerializableInterface
      * @param int $tries
      * @return TryService
      */
-    public static function init($tries = 10)
+    public static function init($tries = 11)
     {
         $tryService = new self($tries);
         return $tryService;
@@ -61,14 +61,6 @@ class TryService implements SerializableInterface
     }
 
     /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->serialize();
-    }
-
-    /**
      * @param array $data
      * @return TryService
      */
@@ -86,6 +78,6 @@ class TryService implements SerializableInterface
             "tries" => $this->getTries()
         ];
 
-        return serialize($data);
+        return $data;
     }
 }
