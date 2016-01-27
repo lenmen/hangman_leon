@@ -39,7 +39,7 @@ class GameController extends FOSRestController
     private  $router;
 
     /**
-     * @var RepositoryFactoryInterface
+     * @var RepositoryInterface
      */
     private $readModelRepository;
 

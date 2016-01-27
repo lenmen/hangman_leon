@@ -1,0 +1,35 @@
+Hangman\Bundle\Game\ReadModel\GameStatistics:
+  type: entity
+  table: statistics
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: false
+      nullable: false
+      column: id
+      generator:
+          strategy: IDENTITY
+    gameId:
+      type: string
+      nullable: false
+    word:
+      type: string
+    gameStartedAt:
+      type: string
+      nullable: false
+    gameWon:
+      type: boolean
+    gameLost:
+      type: boolean
+    gameEnded:
+      type: boolean
+    gameEndedOn:
+      type: string
+      nullable: true
+    correctGuessedLetters:
+      type: json_array
+    wrongGuessedLetters:
+      type: json_array
+    status:
+      type: string

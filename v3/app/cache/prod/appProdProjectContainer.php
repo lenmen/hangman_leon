@@ -144,6 +144,9 @@ class appProdProjectContainer extends Container
             'hangman.game.handler' => 'getHangman_Game_HandlerService',
             'hangman.game.projector' => 'getHangman_Game_ProjectorService',
             'hangman.game.read_model_repository' => 'getHangman_Game_ReadModelRepositoryService',
+            'hangman.game_statistics.controller' => 'getHangman_GameStatistics_ControllerService',
+            'hangman.game_statistics.projector' => 'getHangman_GameStatistics_ProjectorService',
+            'hangman.game_statistics.read_model_repository' => 'getHangman_GameStatistics_ReadModelRepositoryService',
             'http_kernel' => 'getHttpKernelService',
             'jms_serializer' => 'getJmsSerializerService',
             'jms_serializer.array_collection_handler' => 'getJmsSerializer_ArrayCollectionHandlerService',
@@ -375,6 +378,7 @@ class appProdProjectContainer extends Container
     {
         $this->services['broadway.event_handling.event_bus'] = $instance = new \Broadway\EventHandling\SimpleEventBus();
         $instance->subscribe($this->get('hangman.game.projector'));
+        $instance->subscribe($this->get('hangman.game_statistics.projector'));
         return $instance;
     }
     protected function getBroadway_EventStore_DbalService()
@@ -912,6 +916,18 @@ class appProdProjectContainer extends Container
     {
         return $this->services['hangman.game.read_model_repository'] = new \Hangman\Bundle\Game\ReadModel\Doctrine\DoctrineRepository($this->get('doctrine.orm.default_entity_manager'), 'Hangman\\Bundle\\Game\\ReadModel\\Game');
     }
+    protected function getHangman_GameStatistics_ControllerService()
+    {
+        return $this->services['hangman.game_statistics.controller'] = new \Hangman\Bundle\Controller\StatisticsController($this->get('broadway.command_handling.simple_command_bus'), $this->get('broadway.uuid.generator'), $this->get('form.factory'), $this->get('router'), $this->get('hangman.game_statistics.read_model_repository'));
+    }
+    protected function getHangman_GameStatistics_ProjectorService()
+    {
+        return $this->services['hangman.game_statistics.projector'] = new \Hangman\Bundle\Game\ReadModel\GameStatisticsProjector($this->get('hangman.game_statistics.read_model_repository'));
+    }
+    protected function getHangman_GameStatistics_ReadModelRepositoryService()
+    {
+        return $this->services['hangman.game_statistics.read_model_repository'] = new \Hangman\Bundle\Game\ReadModel\Doctrine\DoctrineRepository($this->get('doctrine.orm.default_entity_manager'), 'Hangman\\Bundle\\Game\\ReadModel\\GameStatistics');
+    }
     protected function getHttpKernelService()
     {
         return $this->services['http_kernel'] = new \Symfony\Component\HttpKernel\DependencyInjection\ContainerAwareHttpKernel($this->get('event_dispatcher'), $this, new \Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver($this, $this->get('controller_name_converter'), $this->get('monolog.logger.request', ContainerInterface::NULL_ON_INVALID_REFERENCE)), $this->get('request_stack'), false);
@@ -1154,7 +1170,7 @@ class appProdProjectContainer extends Container
         $c = $this->get('security.authentication.manager');
         $d = $this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE);
         $e = new \Symfony\Component\Security\Http\AccessMap();
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '56a7886e8652c1.76608205', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '56a89b14626e29.75499047', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
     }
     protected function getSecurity_PasswordEncoderService()
     {
@@ -1253,6 +1269,7 @@ class appProdProjectContainer extends Container
     {
         $this->services['sim.projector.registry'] = $instance = new \Simgroep\EventSourcing\EventSourcingBundle\ProjectorRegistry\ProjectorRegistry();
         $instance->addProjector($this->get('hangman.game.projector'), 'hangman.game.projector', $this->get('hangman.game.read_model_repository'));
+        $instance->addProjector($this->get('hangman.game_statistics.projector'), 'hangman.game_statistics.projector', $this->get('hangman.game_statistics.read_model_repository'));
         return $instance;
     }
     protected function getSimgroep_EventSourcing_Command_ContainerService()
@@ -1703,7 +1720,7 @@ class appProdProjectContainer extends Container
     }
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('56a7886e8652c1.76608205')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('56a89b14626e29.75499047')), true);
         $instance->setEventDispatcher($this->get('event_dispatcher'));
         return $instance;
     }

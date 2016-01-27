@@ -7,3 +7,12 @@ services:
       - @form.factory
       - @router
       - @hangman.game.read_model_repository
+
+  hangman.game_statistics.controller:
+    class: Hangman\Bundle\Controller\StatisticsController
+    arguments:
+      - @broadway.command_handling.command_bus
+      - @broadway.uuid.generator
+      - @form.factory
+      - @router
+      - @hangman.game_statistics.read_model_repository

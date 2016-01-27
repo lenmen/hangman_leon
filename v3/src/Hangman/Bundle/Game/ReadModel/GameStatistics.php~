@@ -1,0 +1,314 @@
+<?php
+
+namespace Hangman\Bundle\Game\ReadModel;
+
+/**
+ * GameStatistics
+ */
+class GameStatistics
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string:
+     */
+    private $gameId;
+
+    /**
+     * @var integer
+     */
+    private $GamesStarted;
+
+    /**
+     * @var integer
+     */
+    private $GamesWon;
+
+    /**
+     * @var integer
+     */
+    private $gamesLost;
+
+    /**
+     * @var integer
+     */
+    private $gamesEndedTotal;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set gameId
+     *
+     * @param \string: $gameId
+     *
+     * @return GameStatistics
+     */
+    public function setGameId(string $gameId)
+    {
+        $this->gameId = $gameId;
+
+        return $this;
+    }
+
+    /**
+     * Get gameId
+     *
+     * @return \string:
+     */
+    public function getGameId()
+    {
+        return $this->gameId;
+    }
+
+    /**
+     * Set gamesStarted
+     *
+     * @param integer $gamesStarted
+     *
+     * @return GameStatistics
+     */
+    public function setGamesStarted($gamesStarted)
+    {
+        $this->GamesStarted = $gamesStarted;
+
+        return $this;
+    }
+
+    /**
+     * Get gamesStarted
+     *
+     * @return integer
+     */
+    public function getGamesStarted()
+    {
+        return $this->GamesStarted;
+    }
+
+    /**
+     * Set gamesWon
+     *
+     * @param integer $gamesWon
+     *
+     * @return GameStatistics
+     */
+    public function setGamesWon($gamesWon)
+    {
+        $this->GamesWon = $gamesWon;
+
+        return $this;
+    }
+
+    /**
+     * Get gamesWon
+     *
+     * @return integer
+     */
+    public function getGamesWon()
+    {
+        return $this->GamesWon;
+    }
+
+    /**
+     * Set gamesLost
+     *
+     * @param integer $gamesLost
+     *
+     * @return GameStatistics
+     */
+    public function setGamesLost($gamesLost)
+    {
+        $this->gamesLost = $gamesLost;
+
+        return $this;
+    }
+
+    /**
+     * Get gamesLost
+     *
+     * @return integer
+     */
+    public function getGamesLost()
+    {
+        return $this->gamesLost;
+    }
+
+    /**
+     * Set gamesEndedTotal
+     *
+     * @param integer $gamesEndedTotal
+     *
+     * @return GameStatistics
+     */
+    public function setGamesEndedTotal($gamesEndedTotal)
+    {
+        $this->gamesEndedTotal = $gamesEndedTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get gamesEndedTotal
+     *
+     * @return integer
+     */
+    public function getGamesEndedTotal()
+    {
+        return $this->gamesEndedTotal;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $GameStarted;
+
+    /**
+     * @var boolean
+     */
+    private $GameWon;
+
+    /**
+     * @var boolean
+     */
+    private $gameLost;
+
+    /**
+     * @var boolean
+     */
+    private $gameEnded;
+
+    /**
+     * @var \DateTime
+     */
+    private $gameEndedOn;
+
+
+    /**
+     * Set gameStarted
+     *
+     * @param \DateTime $gameStarted
+     *
+     * @return GameStatistics
+     */
+    public function setGameStarted($gameStarted)
+    {
+        $this->GameStarted = $gameStarted;
+
+        return $this;
+    }
+
+    /**
+     * Get gameStarted
+     *
+     * @return \DateTime
+     */
+    public function getGameStarted()
+    {
+        return $this->GameStarted;
+    }
+
+    /**
+     * Set gameWon
+     *
+     * @param boolean $gameWon
+     *
+     * @return GameStatistics
+     */
+    public function setGameWon($gameWon)
+    {
+        $this->GameWon = $gameWon;
+
+        return $this;
+    }
+
+    /**
+     * Get gameWon
+     *
+     * @return boolean
+     */
+    public function getGameWon()
+    {
+        return $this->GameWon;
+    }
+
+    /**
+     * Set gameLost
+     *
+     * @param boolean $gameLost
+     *
+     * @return GameStatistics
+     */
+    public function setGameLost($gameLost)
+    {
+        $this->gameLost = $gameLost;
+
+        return $this;
+    }
+
+    /**
+     * Get gameLost
+     *
+     * @return boolean
+     */
+    public function getGameLost()
+    {
+        return $this->gameLost;
+    }
+
+    /**
+     * Set gameEnded
+     *
+     * @param boolean $gameEnded
+     *
+     * @return GameStatistics
+     */
+    public function setGameEnded($gameEnded)
+    {
+        $this->gameEnded = $gameEnded;
+
+        return $this;
+    }
+
+    /**
+     * Get gameEnded
+     *
+     * @return boolean
+     */
+    public function getGameEnded()
+    {
+        return $this->gameEnded;
+    }
+
+    /**
+     * Set gameEndedOn
+     *
+     * @param \DateTime $gameEndedOn
+     *
+     * @return GameStatistics
+     */
+    public function setGameEndedOn($gameEndedOn)
+    {
+        $this->gameEndedOn = $gameEndedOn;
+
+        return $this;
+    }
+
+    /**
+     * Get gameEndedOn
+     *
+     * @return \DateTime
+     */
+    public function getGameEndedOn()
+    {
+        return $this->gameEndedOn;
+    }
+}

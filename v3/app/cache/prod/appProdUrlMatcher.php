@@ -27,17 +27,6 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $context = $this->context;
         $request = $this->request;
 
-        // get_game_detail
-        if (0 === strpos($pathinfo, '/games') && preg_match('#^/games/(?P<uuid>[^/]++)/detail(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
-            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
-                $allow = array_merge($allow, array('GET', 'HEAD'));
-                goto not_get_game_detail;
-            }
-
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'get_game_detail')), array (  '_controller' => 'hangman.game.controller:getGameDetailAction',  '_format' => 'json',));
-        }
-        not_get_game_detail:
-
         // post_start_game
         if (0 === strpos($pathinfo, '/starts/games') && preg_match('#^/starts/games(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
             if ($this->context->getMethod() != 'POST') {
@@ -84,6 +73,28 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'post_wordlength')), array (  '_controller' => 'hangman.game.controller:postWordlengthAction',  '_format' => 'json',));
         }
         not_post_wordlength:
+
+        // get_overview
+        if (0 === strpos($pathinfo, '/overview') && preg_match('#^/overview(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_get_overview;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'get_overview')), array (  '_controller' => 'hangman.game_statistics.controller:getOverviewAction',  '_format' => 'json',));
+        }
+        not_get_overview:
+
+        // get_game_detail
+        if (0 === strpos($pathinfo, '/games') && preg_match('#^/games/(?P<uuid>[^/]++)/detail(?:\\.(?P<_format>json|xml|html))?$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_get_game_detail;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'get_game_detail')), array (  '_controller' => 'hangman.game_statistics.controller:getGameDetailAction',  '_format' => 'json',));
+        }
+        not_get_game_detail:
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }

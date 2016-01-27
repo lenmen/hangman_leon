@@ -1,3 +1,7 @@
 hangman_homepage:
     type: rest
     resource: hangman.game.controller
+
+hangman.statistics:
+    type: rest
+    resource: hangman.game_statistics.controller
