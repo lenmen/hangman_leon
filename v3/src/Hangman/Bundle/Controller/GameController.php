@@ -139,7 +139,8 @@ class GameController extends FOSRestController
 
         $response = [
             "good_guesses" => $game->getLetterCorrectlyGuessed(),
-            "wrong_guesses" => $game->getLetterWrongGuessed()
+            "wrong_guesses" => $game->getLetterWrongGuessed(),
+            "message" => $game->getGameStatus()
         ];
 
         if ($game->getGameWon()) {

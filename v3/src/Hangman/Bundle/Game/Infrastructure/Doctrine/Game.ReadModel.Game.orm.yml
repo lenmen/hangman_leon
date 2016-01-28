@@ -28,4 +28,7 @@ Hangman\Bundle\Game\ReadModel\Game:
             type: boolean
         gameLost:
             type: boolean
+        gameStatus:
+            type: string
+            nullable: true
     lifecycleCallbacks: {}

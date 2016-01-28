@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new \JMS\SerializerBundle\JMSSerializerBundle(),
             new \Spray\SerializerBundle\SpraySerializerBundle(),
             new \FOS\RestBundle\FOSRestBundle(),
+            new \Gos\Bundle\WebSocketBundle\GosWebSocketBundle(),
+            new \Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle(),
             new Hangman\Bundle\HangmanBundle(),
         );
 

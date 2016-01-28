@@ -1,0 +1,4 @@
+hangman.game_status:
+  channel: hangman/game_status
+  handler:
+    callback: 'hangman.game_status'

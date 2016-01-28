@@ -16,3 +16,8 @@ services:
       - @form.factory
       - @router
       - @hangman.game_statistics.read_model_repository
+
+  hangman.game.websocket:
+    class: Hangman\Bundle\WebSocket\GameStatusTopic
+    tags:
+      - { name: gos_web_socket.topic }

@@ -139,11 +139,59 @@ class appProdProjectContainer extends Container
             'fragment.renderer.hinclude' => 'getFragment_Renderer_HincludeService',
             'fragment.renderer.inline' => 'getFragment_Renderer_InlineService',
             'fragment.renderer.ssi' => 'getFragment_Renderer_SsiService',
+            'gos_pubsub_router.collection.websocket' => 'getGosPubsubRouter_Collection_WebsocketService',
+            'gos_pubsub_router.context.websocket' => 'getGosPubsubRouter_Context_WebsocketService',
+            'gos_pubsub_router.debug.command' => 'getGosPubsubRouter_Debug_CommandService',
+            'gos_pubsub_router.generator' => 'getGosPubsubRouter_GeneratorService',
+            'gos_pubsub_router.loader.websocket' => 'getGosPubsubRouter_Loader_WebsocketService',
+            'gos_pubsub_router.matcher' => 'getGosPubsubRouter_MatcherService',
+            'gos_pubsub_router.php_file.cache' => 'getGosPubsubRouter_PhpFile_CacheService',
+            'gos_pubsub_router.tokenizer' => 'getGosPubsubRouter_TokenizerService',
+            'gos_pubsub_router.websocket' => 'getGosPubsubRouter_WebsocketService',
+            'gos_web_socket.abstract.pusher' => 'getGosWebSocket_Abstract_PusherService',
+            'gos_web_socket.amqp.pusher' => 'getGosWebSocket_Amqp_PusherService',
+            'gos_web_socket.amqp.server_push_handler' => 'getGosWebSocket_Amqp_ServerPushHandlerService',
+            'gos_web_socket.client_event.listener' => 'getGosWebSocket_ClientEvent_ListenerService',
+            'gos_web_socket.client_storage' => 'getGosWebSocket_ClientStorageService',
+            'gos_web_socket.data_collector' => 'getGosWebSocket_DataCollectorService',
+            'gos_web_socket.entry_point' => 'getGosWebSocket_EntryPointService',
+            'gos_web_socket.kernel_event.terminate' => 'getGosWebSocket_KernelEvent_TerminateService',
+            'gos_web_socket.memory_usage.periodic' => 'getGosWebSocket_MemoryUsage_PeriodicService',
+            'gos_web_socket.null.pubsub.router' => 'getGosWebSocket_Null_Pubsub_RouterService',
+            'gos_web_socket.origins.registry' => 'getGosWebSocket_Origins_RegistryService',
+            'gos_web_socket.pdo.periodic_ping' => 'getGosWebSocket_Pdo_PeriodicPingService',
+            'gos_web_socket.periodic.registry' => 'getGosWebSocket_Periodic_RegistryService',
+            'gos_web_socket.pnctl_event.listener' => 'getGosWebSocket_PnctlEvent_ListenerService',
+            'gos_web_socket.push_message.serializer' => 'getGosWebSocket_PushMessage_SerializerService',
+            'gos_web_socket.pusher_registry' => 'getGosWebSocket_PusherRegistryService',
+            'gos_web_socket.router.wamp' => 'getGosWebSocket_Router_WampService',
+            'gos_web_socket.rpc.dispatcher' => 'getGosWebSocket_Rpc_DispatcherService',
+            'gos_web_socket.rpc.registry' => 'getGosWebSocket_Rpc_RegistryService',
+            'gos_web_socket.server.event_loop' => 'getGosWebSocket_Server_EventLoopService',
+            'gos_web_socket.server.in_memory.client_storage.driver' => 'getGosWebSocket_Server_InMemory_ClientStorage_DriverService',
+            'gos_web_socket.server.registry' => 'getGosWebSocket_Server_RegistryService',
+            'gos_web_socket.server_command' => 'getGosWebSocket_ServerCommandService',
+            'gos_web_socket.server_push_handler.registry' => 'getGosWebSocket_ServerPushHandler_RegistryService',
+            'gos_web_socket.topic.dispatcher' => 'getGosWebSocket_Topic_DispatcherService',
+            'gos_web_socket.topic.periodic_timer' => 'getGosWebSocket_Topic_PeriodicTimerService',
+            'gos_web_socket.topic.registry' => 'getGosWebSocket_Topic_RegistryService',
+            'gos_web_socket.twig.extension' => 'getGosWebSocket_Twig_ExtensionService',
+            'gos_web_socket.wamp.pusher' => 'getGosWebSocket_Wamp_PusherService',
+            'gos_web_socket.wamp.topic_manager' => 'getGosWebSocket_Wamp_TopicManagerService',
+            'gos_web_socket.websocket.client_manipulator' => 'getGosWebSocket_Websocket_ClientManipulatorService',
+            'gos_web_socket.websocket_authentification.provider' => 'getGosWebSocket_WebsocketAuthentification_ProviderService',
+            'gos_web_socket.websocket_server.command' => 'getGosWebSocket_WebsocketServer_CommandService',
+            'gos_web_socket.ws.client' => 'getGosWebSocket_Ws_ClientService',
+            'gos_web_socket.ws.server' => 'getGosWebSocket_Ws_ServerService',
+            'gos_web_socket.zmq.pusher' => 'getGosWebSocket_Zmq_PusherService',
+            'gos_web_socket.zmq.server_push_handler' => 'getGosWebSocket_Zmq_ServerPushHandlerService',
+            'gos_web_socket_server.wamp_application' => 'getGosWebSocketServer_WampApplicationService',
             'hangman.event.repo' => 'getHangman_Event_RepoService',
             'hangman.game.controller' => 'getHangman_Game_ControllerService',
             'hangman.game.handler' => 'getHangman_Game_HandlerService',
             'hangman.game.projector' => 'getHangman_Game_ProjectorService',
             'hangman.game.read_model_repository' => 'getHangman_Game_ReadModelRepositoryService',
+            'hangman.game.websocket' => 'getHangman_Game_WebsocketService',
             'hangman.game_statistics.controller' => 'getHangman_GameStatistics_ControllerService',
             'hangman.game_statistics.projector' => 'getHangman_GameStatistics_ProjectorService',
             'hangman.game_statistics.read_model_repository' => 'getHangman_GameStatistics_ReadModelRepositoryService',
@@ -173,12 +221,14 @@ class appProdProjectContainer extends Container
             'monolog.handler.console' => 'getMonolog_Handler_ConsoleService',
             'monolog.handler.main' => 'getMonolog_Handler_MainService',
             'monolog.handler.nested' => 'getMonolog_Handler_NestedService',
+            'monolog.handler.websocket' => 'getMonolog_Handler_WebsocketService',
             'monolog.logger.doctrine' => 'getMonolog_Logger_DoctrineService',
             'monolog.logger.php' => 'getMonolog_Logger_PhpService',
             'monolog.logger.request' => 'getMonolog_Logger_RequestService',
             'monolog.logger.router' => 'getMonolog_Logger_RouterService',
             'monolog.logger.security' => 'getMonolog_Logger_SecurityService',
             'monolog.logger.translation' => 'getMonolog_Logger_TranslationService',
+            'monolog.logger.websocket' => 'getMonolog_Logger_WebsocketService',
             'property_accessor' => 'getPropertyAccessorService',
             'request' => 'getRequestService',
             'request_stack' => 'getRequestStackService',
@@ -321,6 +371,9 @@ class appProdProjectContainer extends Container
             'broadway.serializer.payload' => 'spray_serializer.integration.broadway',
             'broadway.serializer.readmodel' => 'spray_serializer.integration.broadway',
             'command_gateway' => 'simgroep_event_sourcing.command_gateway',
+            'console.command.gos_bundle_pubsubrouterbundle_command_debugroutercommand' => 'gos_pubsub_router.debug.command',
+            'console.command.gos_bundle_websocketbundle_command_servercommand' => 'gos_web_socket.server_command',
+            'console.command.gos_bundle_websocketbundle_command_websocketservercommand' => 'gos_web_socket.websocket_server.command',
             'consumer_factory' => 'simgroep_event_sourcing.messaging.consumer_factory',
             'database_connection' => 'doctrine.dbal.default_connection',
             'doctrine.orm.default_metadata_cache' => 'doctrine_cache.providers.doctrine.orm.default_metadata_cache',
@@ -548,6 +601,11 @@ class appProdProjectContainer extends Container
         $instance->addListenerService('kernel.view', array(0 => 'fos_rest.view_response_listener', 1 => 'onKernelView'), 100);
         $instance->addListenerService('kernel.request', array(0 => 'fos_rest.body_listener', 1 => 'onKernelRequest'), 10);
         $instance->addListenerService('kernel.controller', array(0 => 'fos_rest.param_fetcher_listener', 1 => 'onKernelController'), 5);
+        $instance->addListenerService('gos_web_socket.client_connected', array(0 => 'gos_web_socket.client_event.listener', 1 => 'onClientConnect'), 0);
+        $instance->addListenerService('gos_web_socket.client_disconnected', array(0 => 'gos_web_socket.client_event.listener', 1 => 'onClientDisconnect'), 0);
+        $instance->addListenerService('gos_web_socket.client_error', array(0 => 'gos_web_socket.client_event.listener', 1 => 'onClientError'), 0);
+        $instance->addListenerService('gos_web_socket.client_rejected', array(0 => 'gos_web_socket.client_event.listener', 1 => 'onClientRejected'), 0);
+        $instance->addListenerService('gos_web_socket.server_launched', array(0 => 'gos_web_socket.pnctl_event.listener', 1 => 'bindPnctlEvent'), 0);
         $instance->addSubscriberService('response_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener');
         $instance->addSubscriberService('streamed_response_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\StreamedResponseListener');
         $instance->addSubscriberService('locale_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\LocaleListener');
@@ -560,6 +618,7 @@ class appProdProjectContainer extends Container
         $instance->addSubscriberService('security.firewall', 'Symfony\\Component\\Security\\Http\\Firewall');
         $instance->addSubscriberService('security.rememberme.response_listener', 'Symfony\\Component\\Security\\Http\\RememberMe\\ResponseListener');
         $instance->addSubscriberService('twig.exception_listener', 'Symfony\\Component\\HttpKernel\\EventListener\\ExceptionListener');
+        $instance->addSubscriberService('monolog.handler.websocket', 'Symfony\\Bridge\\Monolog\\Handler\\ConsoleHandler');
         $instance->addSubscriberService('monolog.handler.console', 'Symfony\\Bridge\\Monolog\\Handler\\ConsoleHandler');
         $instance->addSubscriberService('swiftmailer.email_sender.listener', 'Symfony\\Bundle\\SwiftmailerBundle\\EventListener\\EmailSenderListener');
         $instance->addSubscriberService('sensio_framework_extra.controller.listener', 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\ControllerListener');
@@ -896,6 +955,218 @@ class appProdProjectContainer extends Container
         $instance->setFragmentPath('/_fragment');
         return $instance;
     }
+    protected function getGosPubsubRouter_Collection_WebsocketService()
+    {
+        return $this->services['gos_pubsub_router.collection.websocket'] = new \Gos\Bundle\PubSubRouterBundle\Router\RouteCollection();
+    }
+    protected function getGosPubsubRouter_Context_WebsocketService()
+    {
+        $this->services['gos_pubsub_router.context.websocket'] = $instance = new \Gos\Bundle\PubSubRouterBundle\Router\RouterContext();
+        $instance->setTokenSeparator('/');
+        return $instance;
+    }
+    protected function getGosPubsubRouter_Debug_CommandService()
+    {
+        $this->services['gos_pubsub_router.debug.command'] = $instance = new \Gos\Bundle\PubSubRouterBundle\Command\DebugRouterCommand();
+        $instance->addRouter($this->get('gos_pubsub_router.websocket'));
+        return $instance;
+    }
+    protected function getGosPubsubRouter_GeneratorService()
+    {
+        $this->services['gos_pubsub_router.generator'] = $instance = new \Gos\Bundle\PubSubRouterBundle\Generator\Generator($this->get('gos_pubsub_router.tokenizer'));
+        $instance->setCollection($this->get('gos_pubsub_router.collection.websocket'));
+        return $instance;
+    }
+    protected function getGosPubsubRouter_Loader_WebsocketService()
+    {
+        $this->services['gos_pubsub_router.loader.websocket'] = $instance = new \Gos\Bundle\PubSubRouterBundle\Loader\RouteLoader($this->get('gos_pubsub_router.collection.websocket'), $this->get('gos_pubsub_router.php_file.cache'), 'websocket');
+        $instance->addResource('@HangmanBundle/Resources/pubsub/routing.yml');
+        $instance->addLoader(new \Gos\Bundle\PubSubRouterBundle\Loader\YamlFileLoader($this->get('file_locator')));
+        return $instance;
+    }
+    protected function getGosPubsubRouter_MatcherService()
+    {
+        $this->services['gos_pubsub_router.matcher'] = $instance = new \Gos\Bundle\PubSubRouterBundle\Matcher\Matcher($this->get('gos_pubsub_router.tokenizer'));
+        $instance->setCollection($this->get('gos_pubsub_router.collection.websocket'));
+        return $instance;
+    }
+    protected function getGosPubsubRouter_TokenizerService()
+    {
+        return $this->services['gos_pubsub_router.tokenizer'] = new \Gos\Bundle\PubSubRouterBundle\Tokenizer\TokenizerCacheDecorator(new \Gos\Bundle\PubSubRouterBundle\Tokenizer\Tokenizer(), $this->get('gos_pubsub_router.php_file.cache'));
+    }
+    protected function getGosPubsubRouter_WebsocketService()
+    {
+        $this->services['gos_pubsub_router.websocket'] = $instance = new \Gos\Bundle\PubSubRouterBundle\Router\Router($this->get('gos_pubsub_router.collection.websocket'), $this->get('gos_pubsub_router.matcher'), $this->get('gos_pubsub_router.generator'), $this->get('gos_pubsub_router.loader.websocket'), 'websocket');
+        $instance->setContext($this->get('gos_pubsub_router.context.websocket'));
+        return $instance;
+    }
+    protected function getGosWebSocket_Abstract_PusherService()
+    {
+        $this->services['gos_web_socket.abstract.pusher'] = $instance = new \Gos\Bundle\WebSocketBundle\Pusher\AbstractPusher();
+        $instance->setRouter($this->get('gos_web_socket.router.wamp'));
+        $instance->setSerializer($this->get('gos_web_socket.push_message.serializer'));
+        return $instance;
+    }
+    protected function getGosWebSocket_Amqp_PusherService()
+    {
+        $this->services['gos_web_socket.amqp.pusher'] = $instance = new \Gos\Bundle\WebSocketBundle\Pusher\Amqp\AmqpPusher();
+        $instance->setRouter($this->get('gos_web_socket.router.wamp'));
+        $instance->setSerializer($this->get('gos_web_socket.push_message.serializer'));
+        return $instance;
+    }
+    protected function getGosWebSocket_Amqp_ServerPushHandlerService()
+    {
+        return $this->services['gos_web_socket.amqp.server_push_handler'] = new \Gos\Bundle\WebSocketBundle\Pusher\Amqp\AmqpServerPushHandler($this->get('gos_web_socket.amqp.pusher'), $this->get('gos_web_socket.router.wamp'), $this->get('gos_web_socket.push_message.serializer'), $this->get('event_dispatcher'), $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_ClientEvent_ListenerService($lazyLoad = true)
+    {
+        return $this->services['gos_web_socket.client_event.listener'] = new \Gos\Bundle\WebSocketBundle\Event\ClientEventListener($this->get('gos_web_socket.client_storage'), $this->get('security.context'), $this->get('gos_web_socket.websocket_authentification.provider'), $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_ClientStorageService()
+    {
+        $this->services['gos_web_socket.client_storage'] = $instance = new \Gos\Bundle\WebSocketBundle\Client\ClientStorage(900, $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        $instance->setStorageDriver($this->get('gos_web_socket.server.in_memory.client_storage.driver'));
+        return $instance;
+    }
+    protected function getGosWebSocket_DataCollectorService()
+    {
+        return $this->services['gos_web_socket.data_collector'] = new \Gos\Bundle\WebSocketBundle\DataCollector\WebsocketDataCollector();
+    }
+    protected function getGosWebSocket_EntryPointService()
+    {
+        return $this->services['gos_web_socket.entry_point'] = new \Gos\Bundle\WebSocketBundle\Server\EntryPoint($this->get('gos_web_socket.server.registry'));
+    }
+    protected function getGosWebSocket_KernelEvent_TerminateService()
+    {
+        return $this->services['gos_web_socket.kernel_event.terminate'] = new \Gos\Bundle\WebSocketBundle\Event\KernelTerminateListener($this->get('gos_web_socket.pusher_registry'));
+    }
+    protected function getGosWebSocket_MemoryUsage_PeriodicService($lazyLoad = true)
+    {
+        return $this->services['gos_web_socket.memory_usage.periodic'] = new \Gos\Bundle\WebSocketBundle\Periodic\PeriodicMemoryUsage($this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_Null_Pubsub_RouterService()
+    {
+        return $this->services['gos_web_socket.null.pubsub.router'] = new \Gos\Bundle\WebSocketBundle\Router\NullPubSubRouter();
+    }
+    protected function getGosWebSocket_Origins_RegistryService()
+    {
+        return $this->services['gos_web_socket.origins.registry'] = new \Gos\Bundle\WebSocketBundle\Server\App\Registry\OriginRegistry();
+    }
+    protected function getGosWebSocket_Pdo_PeriodicPingService($lazyLoad = true)
+    {
+        return $this->services['gos_web_socket.pdo.periodic_ping'] = new \Gos\Bundle\WebSocketBundle\Periodic\PdoPeriodicPing(NULL, $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_Periodic_RegistryService()
+    {
+        return $this->services['gos_web_socket.periodic.registry'] = new \Gos\Bundle\WebSocketBundle\Server\App\Registry\PeriodicRegistry();
+    }
+    protected function getGosWebSocket_PnctlEvent_ListenerService($lazyLoad = true)
+    {
+        return $this->services['gos_web_socket.pnctl_event.listener'] = new \Gos\Bundle\WebSocketBundle\Event\StartServerListener($this->get('gos_web_socket.periodic.registry'), $this->get('gos_web_socket.server_push_handler.registry'), $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_PushMessage_SerializerService()
+    {
+        return $this->services['gos_web_socket.push_message.serializer'] = new \Gos\Bundle\WebSocketBundle\Pusher\Serializer\MessageSerializer();
+    }
+    protected function getGosWebSocket_PusherRegistryService()
+    {
+        return $this->services['gos_web_socket.pusher_registry'] = new \Gos\Bundle\WebSocketBundle\Pusher\PusherRegistry();
+    }
+    protected function getGosWebSocket_Router_WampService($lazyLoad = true)
+    {
+        return $this->services['gos_web_socket.router.wamp'] = new \Gos\Bundle\WebSocketBundle\Router\WampRouter($this->get('gos_pubsub_router.websocket'), false, $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_Rpc_DispatcherService()
+    {
+        return $this->services['gos_web_socket.rpc.dispatcher'] = new \Gos\Bundle\WebSocketBundle\Server\App\Dispatcher\RpcDispatcher($this->get('gos_web_socket.rpc.registry'));
+    }
+    protected function getGosWebSocket_Rpc_RegistryService()
+    {
+        return $this->services['gos_web_socket.rpc.registry'] = new \Gos\Bundle\WebSocketBundle\Server\App\Registry\RpcRegistry();
+    }
+    protected function getGosWebSocket_Server_EventLoopService()
+    {
+        return $this->services['gos_web_socket.server.event_loop'] = \React\EventLoop\Factory::create();
+    }
+    protected function getGosWebSocket_Server_InMemory_ClientStorage_DriverService()
+    {
+        return $this->services['gos_web_socket.server.in_memory.client_storage.driver'] = new \Gos\Bundle\WebSocketBundle\Client\Driver\InMemoryDriver();
+    }
+    protected function getGosWebSocket_Server_RegistryService()
+    {
+        $this->services['gos_web_socket.server.registry'] = $instance = new \Gos\Bundle\WebSocketBundle\Server\App\Registry\ServerRegistry();
+        $instance->addServer($this->get('gos_web_socket.ws.server'));
+        return $instance;
+    }
+    protected function getGosWebSocket_ServerCommandService()
+    {
+        return $this->services['gos_web_socket.server_command'] = new \Gos\Bundle\WebSocketBundle\Command\ServerCommand($this->get('gos_web_socket.entry_point'), '192.168.33.10', 8080, $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_ServerPushHandler_RegistryService()
+    {
+        return $this->services['gos_web_socket.server_push_handler.registry'] = new \Gos\Bundle\WebSocketBundle\Pusher\ServerPushHandlerRegistry();
+    }
+    protected function getGosWebSocket_Topic_DispatcherService($lazyLoad = true)
+    {
+        return $this->services['gos_web_socket.topic.dispatcher'] = new \Gos\Bundle\WebSocketBundle\Server\App\Dispatcher\TopicDispatcher($this->get('gos_web_socket.topic.registry'), $this->get('gos_web_socket.router.wamp'), $this->get('gos_web_socket.topic.periodic_timer'), $this->get('gos_web_socket.wamp.topic_manager'), $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_Topic_PeriodicTimerService()
+    {
+        return $this->services['gos_web_socket.topic.periodic_timer'] = new \Gos\Bundle\WebSocketBundle\Topic\TopicPeriodicTimer($this->get('gos_web_socket.server.event_loop'));
+    }
+    protected function getGosWebSocket_Topic_RegistryService()
+    {
+        $this->services['gos_web_socket.topic.registry'] = $instance = new \Gos\Bundle\WebSocketBundle\Server\App\Registry\TopicRegistry();
+        $instance->addTopic($this->get('hangman.game.websocket'));
+        return $instance;
+    }
+    protected function getGosWebSocket_Twig_ExtensionService()
+    {
+        return $this->services['gos_web_socket.twig.extension'] = new \Gos\Bundle\WebSocketBundle\Twig\GosWebSocketServerExtension();
+    }
+    protected function getGosWebSocket_Wamp_PusherService()
+    {
+        $a = $this->get('gos_web_socket.push_message.serializer');
+        $this->services['gos_web_socket.wamp.pusher'] = $instance = new \Gos\Bundle\WebSocketBundle\Pusher\Wamp\WampPusher($a);
+        $instance->setRouter($this->get('gos_web_socket.router.wamp'));
+        $instance->setSerializer($a);
+        return $instance;
+    }
+    protected function getGosWebSocket_Wamp_TopicManagerService()
+    {
+        return $this->services['gos_web_socket.wamp.topic_manager'] = new \Ratchet\Wamp\TopicManager();
+    }
+    protected function getGosWebSocket_Websocket_ClientManipulatorService()
+    {
+        return $this->services['gos_web_socket.websocket.client_manipulator'] = new \Gos\Bundle\WebSocketBundle\Client\ClientManipulator($this->get('gos_web_socket.client_storage'), $this->get('gos_web_socket.websocket_authentification.provider'));
+    }
+    protected function getGosWebSocket_WebsocketAuthentification_ProviderService()
+    {
+        return $this->services['gos_web_socket.websocket_authentification.provider'] = new \Gos\Bundle\WebSocketBundle\Client\Auth\WebsocketAuthenticationProvider($this->get('security.context'), array(0 => 'ws_firewall'), $this->get('gos_web_socket.client_storage'), $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_WebsocketServer_CommandService()
+    {
+        return $this->services['gos_web_socket.websocket_server.command'] = new \Gos\Bundle\WebSocketBundle\Command\WebsocketServerCommand($this->get('gos_web_socket.entry_point'), '192.168.33.10', 8080, $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocket_Ws_ClientService()
+    {
+        $this->services['gos_web_socket.ws.client'] = $instance = new \Gos\Component\WebSocketClient\Wamp\Client('192.168.33.10', 8080);
+        if ($this->has('monolog.logger.websocket')) {
+            $instance->setLogger($this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        }
+        return $instance;
+    }
+    protected function getGosWebSocket_Zmq_PusherService()
+    {
+        $this->services['gos_web_socket.zmq.pusher'] = $instance = new \Gos\Bundle\WebSocketBundle\Pusher\Zmq\ZmqPusher();
+        $instance->setRouter($this->get('gos_web_socket.router.wamp'));
+        $instance->setSerializer($this->get('gos_web_socket.push_message.serializer'));
+        return $instance;
+    }
+    protected function getGosWebSocket_Zmq_ServerPushHandlerService()
+    {
+        return $this->services['gos_web_socket.zmq.server_push_handler'] = new \Gos\Bundle\WebSocketBundle\Pusher\Zmq\ZmqServerPushHandler($this->get('gos_web_socket.zmq.pusher'), $this->get('gos_web_socket.router.wamp'), $this->get('gos_web_socket.push_message.serializer'), $this->get('event_dispatcher'), $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
     protected function getHangman_Event_RepoService()
     {
         return $this->services['hangman.event.repo'] = new \Hangman\Bundle\Game\Domain\Game\GameRepository($this->get('broadway.event_store.dbal'), $this->get('broadway.event_handling.event_bus'), array(0 => $this->get('broadway.metadata_enriching_event_stream_decorator')));
@@ -915,6 +1186,10 @@ class appProdProjectContainer extends Container
     protected function getHangman_Game_ReadModelRepositoryService()
     {
         return $this->services['hangman.game.read_model_repository'] = new \Hangman\Bundle\Game\ReadModel\Doctrine\DoctrineRepository($this->get('doctrine.orm.default_entity_manager'), 'Hangman\\Bundle\\Game\\ReadModel\\Game');
+    }
+    protected function getHangman_Game_WebsocketService()
+    {
+        return $this->services['hangman.game.websocket'] = new \Hangman\Bundle\WebSocket\GameStatusTopic();
     }
     protected function getHangman_GameStatistics_ControllerService()
     {
@@ -976,7 +1251,7 @@ class appProdProjectContainer extends Container
     }
     protected function getJmsSerializer_MetadataDriverService()
     {
-        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/vagrant/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/vagrant/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/vagrant/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/vagrant/vendor/symfony/monolog-bundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/vagrant/vendor/symfony/swiftmailer-bundle/Resources/config/serializer', 'Doctrine\\Bundle\\DoctrineBundle' => '/vagrant/vendor/doctrine/doctrine-bundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/vagrant/vendor/sensio/framework-extra-bundle/Resources/config/serializer', 'Broadway\\Bundle\\BroadwayBundle' => '/vagrant/vendor/broadway/broadway/src/Broadway/Bundle/BroadwayBundle/Resources/config/serializer', 'Simgroep\\EventSourcing\\EventSourcingBundle' => '/vagrant/vendor/simgroep/event-sourcing/src/EventSourcingBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/vagrant/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer', 'Spray\\SerializerBundle' => '/vagrant/vendor/jurjean/spray-serializer-bundle/src/Resources/config/serializer', 'FOS\\RestBundle' => '/vagrant/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer', 'Hangman\\Bundle' => '/vagrant/src/Hangman/Bundle/Resources/config/serializer'));
+        $a = new \Metadata\Driver\FileLocator(array('Symfony\\Bundle\\FrameworkBundle' => '/vagrant/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/config/serializer', 'Symfony\\Bundle\\SecurityBundle' => '/vagrant/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/config/serializer', 'Symfony\\Bundle\\TwigBundle' => '/vagrant/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/config/serializer', 'Symfony\\Bundle\\MonologBundle' => '/vagrant/vendor/symfony/monolog-bundle/Resources/config/serializer', 'Symfony\\Bundle\\SwiftmailerBundle' => '/vagrant/vendor/symfony/swiftmailer-bundle/Resources/config/serializer', 'Doctrine\\Bundle\\DoctrineBundle' => '/vagrant/vendor/doctrine/doctrine-bundle/Resources/config/serializer', 'Sensio\\Bundle\\FrameworkExtraBundle' => '/vagrant/vendor/sensio/framework-extra-bundle/Resources/config/serializer', 'Broadway\\Bundle\\BroadwayBundle' => '/vagrant/vendor/broadway/broadway/src/Broadway/Bundle/BroadwayBundle/Resources/config/serializer', 'Simgroep\\EventSourcing\\EventSourcingBundle' => '/vagrant/vendor/simgroep/event-sourcing/src/EventSourcingBundle/Resources/config/serializer', 'JMS\\SerializerBundle' => '/vagrant/vendor/jms/serializer-bundle/JMS/SerializerBundle/Resources/config/serializer', 'Spray\\SerializerBundle' => '/vagrant/vendor/jurjean/spray-serializer-bundle/src/Resources/config/serializer', 'FOS\\RestBundle' => '/vagrant/vendor/friendsofsymfony/rest-bundle/FOS/RestBundle/Resources/config/serializer', 'Gos\\Bundle\\WebSocketBundle' => '/vagrant/vendor/gos/web-socket-bundle/Resources/config/serializer', 'Gos\\Bundle\\PubSubRouterBundle' => '/vagrant/vendor/gos/pubsub-router-bundle/Resources/config/serializer', 'Hangman\\Bundle' => '/vagrant/src/Hangman/Bundle/Resources/config/serializer'));
         return $this->services['jms_serializer.metadata_driver'] = new \JMS\Serializer\Metadata\Driver\DoctrineTypeDriver(new \Metadata\Driver\DriverChain(array(0 => new \JMS\Serializer\Metadata\Driver\YamlDriver($a), 1 => new \JMS\Serializer\Metadata\Driver\XmlDriver($a), 2 => new \JMS\Serializer\Metadata\Driver\PhpDriver($a), 3 => new \JMS\Serializer\Metadata\Driver\AnnotationDriver($this->get('annotation_reader')))), $this->get('doctrine'));
     }
     protected function getJmsSerializer_NamingStrategyService()
@@ -1040,6 +1315,10 @@ class appProdProjectContainer extends Container
     {
         return $this->services['monolog.handler.nested'] = new \Monolog\Handler\StreamHandler(($this->targetDirs[2].'/logs/prod.log'), 100, true, NULL);
     }
+    protected function getMonolog_Handler_WebsocketService()
+    {
+        return $this->services['monolog.handler.websocket'] = new \Symfony\Bridge\Monolog\Handler\ConsoleHandler(NULL, true, array(32 => 200, 64 => 250, 128 => 200, 256 => 100));
+    }
     protected function getMonolog_Logger_DoctrineService()
     {
         $this->services['monolog.logger.doctrine'] = $instance = new \Symfony\Bridge\Monolog\Logger('doctrine');
@@ -1080,6 +1359,14 @@ class appProdProjectContainer extends Container
         $this->services['monolog.logger.translation'] = $instance = new \Symfony\Bridge\Monolog\Logger('translation');
         $instance->pushHandler($this->get('monolog.handler.console'));
         $instance->pushHandler($this->get('monolog.handler.main'));
+        return $instance;
+    }
+    protected function getMonolog_Logger_WebsocketService()
+    {
+        $this->services['monolog.logger.websocket'] = $instance = new \Symfony\Bridge\Monolog\Logger('websocket');
+        $instance->pushHandler($this->get('monolog.handler.console'));
+        $instance->pushHandler($this->get('monolog.handler.main'));
+        $instance->pushHandler($this->get('monolog.handler.websocket'));
         return $instance;
     }
     protected function getPropertyAccessorService()
@@ -1170,7 +1457,7 @@ class appProdProjectContainer extends Container
         $c = $this->get('security.authentication.manager');
         $d = $this->get('router', ContainerInterface::NULL_ON_INVALID_REFERENCE);
         $e = new \Symfony\Component\Security\Http\AccessMap();
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '56a89b14626e29.75499047', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($e, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => new \Symfony\Component\Security\Core\User\InMemoryUserProvider()), 'main', $a, $this->get('event_dispatcher', ContainerInterface::NULL_ON_INVALID_REFERENCE)), 2 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '56a9f491eaba41.16723854', $a, $c), 3 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $e, $c)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), new \Symfony\Component\Security\Http\HttpUtils($d, $d), 'main', NULL, NULL, NULL, $a, false));
     }
     protected function getSecurity_PasswordEncoderService()
     {
@@ -1634,7 +1921,10 @@ class appProdProjectContainer extends Container
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(new \Symfony\Bridge\Twig\Form\TwigRenderer(new \Symfony\Bridge\Twig\Form\TwigRendererEngine(array(0 => 'form_div_layout.html.twig')), $this->get('security.csrf.token_manager', ContainerInterface::NULL_ON_INVALID_REFERENCE))));
         $instance->addExtension(new \Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension());
         $instance->addExtension(new \JMS\Serializer\Twig\SerializerExtension($this->get('jms_serializer')));
+        $instance->addExtension($this->get('gos_web_socket.twig.extension'));
         $instance->addGlobal('app', $d);
+        $instance->addGlobal('gos_web_socket_server_host', '192.168.33.10');
+        $instance->addGlobal('gos_web_socket_server_port', 8080);
         call_user_func(array(new \Symfony\Bundle\TwigBundle\DependencyInjection\Configurator\EnvironmentConfigurator('F j, Y H:i', '%d days', NULL, 0, '.', ','), 'configure'), $instance);
         return $instance;
     }
@@ -1658,6 +1948,7 @@ class appProdProjectContainer extends Container
         $instance->addPath('/vagrant/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views', 'Twig');
         $instance->addPath('/vagrant/vendor/symfony/swiftmailer-bundle/Resources/views', 'Swiftmailer');
         $instance->addPath('/vagrant/vendor/doctrine/doctrine-bundle/Resources/views', 'Doctrine');
+        $instance->addPath('/vagrant/vendor/gos/web-socket-bundle/Resources/views', 'GosWebSocket');
         $instance->addPath('/vagrant/src/Hangman/Bundle/Resources/views', 'Hangman');
         $instance->addPath(($this->targetDirs[2].'/Resources/views'));
         $instance->addPath('/vagrant/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form');
@@ -1703,6 +1994,18 @@ class appProdProjectContainer extends Container
     {
         return $this->services['controller_name_converter'] = new \Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser($this->get('kernel'));
     }
+    protected function getGosPubsubRouter_PhpFile_CacheService()
+    {
+        return $this->services['gos_pubsub_router.php_file.cache'] = new \Gos\Bundle\PubSubRouterBundle\Cache\PhpFileCacheDecorator(__DIR__, false);
+    }
+    protected function getGosWebSocket_Ws_ServerService($lazyLoad = true)
+    {
+        return $this->services['gos_web_socket.ws.server'] = new \Gos\Bundle\WebSocketBundle\Server\Type\WebSocketServer($this->get('gos_web_socket.server.event_loop'), $this->get('event_dispatcher'), $this->get('gos_web_socket.periodic.registry'), $this->get('gos_web_socket_server.wamp_application'), $this->get('gos_web_socket.origins.registry'), false, $this->get('gos_web_socket.wamp.topic_manager'), $this->get('gos_web_socket.server_push_handler.registry'), $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
+    protected function getGosWebSocketServer_WampApplicationService($lazyLoad = true)
+    {
+        return $this->services['gos_web_socket_server.wamp_application'] = new \Gos\Bundle\WebSocketBundle\Server\App\WampApplication($this->get('gos_web_socket.rpc.dispatcher'), $this->get('gos_web_socket.topic.dispatcher'), $this->get('event_dispatcher'), $this->get('gos_web_socket.client_storage'), $this->get('gos_web_socket.router.wamp'), $this->get('monolog.logger.websocket', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+    }
     protected function getJmsSerializer_UnserializeObjectConstructorService()
     {
         return $this->services['jms_serializer.unserialize_object_constructor'] = new \JMS\Serializer\Construction\UnserializeObjectConstructor();
@@ -1720,7 +2023,7 @@ class appProdProjectContainer extends Container
     }
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('56a89b14626e29.75499047')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('56a9f491eaba41.16723854')), true);
         $instance->setEventDispatcher($this->get('event_dispatcher'));
         return $instance;
     }
@@ -1798,6 +2101,8 @@ class appProdProjectContainer extends Container
                 'JMSSerializerBundle' => 'JMS\\SerializerBundle\\JMSSerializerBundle',
                 'SpraySerializerBundle' => 'Spray\\SerializerBundle\\SpraySerializerBundle',
                 'FOSRestBundle' => 'FOS\\RestBundle\\FOSRestBundle',
+                'GosWebSocketBundle' => 'Gos\\Bundle\\WebSocketBundle\\GosWebSocketBundle',
+                'GosPubSubRouterBundle' => 'Gos\\Bundle\\PubSubRouterBundle\\GosPubSubRouterBundle',
                 'HangmanBundle' => 'Hangman\\Bundle\\HangmanBundle',
             ),
             'kernel.charset' => 'UTF-8',
@@ -2102,6 +2407,12 @@ class appProdProjectContainer extends Container
             'monolog.handlers_to_channels' => array(
                 'monolog.handler.console' => NULL,
                 'monolog.handler.main' => NULL,
+                'monolog.handler.websocket' => array(
+                    'type' => 'inclusive',
+                    'elements' => array(
+                        0 => 'websocket',
+                    ),
+                ),
             ),
             'swiftmailer.class' => 'Swift_Mailer',
             'swiftmailer.transport.sendmail.class' => 'Swift_Transport_SendmailTransport',
@@ -2356,7 +2667,21 @@ class appProdProjectContainer extends Container
             ),
             'fos_rest.param_fetcher_listener.class' => 'FOS\\RestBundle\\EventListener\\ParamFetcherListener',
             'fos_rest.param_fetcher_listener.set_params_as_attributes' => false,
+            'web_socket_server.port' => 8080,
+            'web_socket_server.host' => '192.168.33.10',
+            'web_socket_origin_check' => false,
+            'web_socket_server.client_storage.ttl' => 900,
+            'web_socket_server.client_storage.prefix' => '',
+            'gos_web_socket.firewall' => array(
+                0 => 'ws_firewall',
+            ),
             'console.command.ids' => array(
+                0 => 'gos_web_socket.server_command',
+                1 => 'gos_web_socket.websocket_server.command',
+                2 => 'gos_pubsub_router.debug.command',
+            ),
+            'gos_pubsub_registered_routers' => array(
+                0 => 'websocket',
             ),
         );
     }

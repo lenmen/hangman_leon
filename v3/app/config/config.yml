@@ -104,3 +104,11 @@ broadway:
     saga:
         mongodb:
             storage_suffix: "_%kernel.environment%"
+
+gos_web_socket:
+    server:
+        port: 8080
+        host: 0.0.0.0
+        router:
+            resources:
+              - @HangmanBundle/Resources/pubsub/routing.yml

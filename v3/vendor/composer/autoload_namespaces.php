@@ -19,6 +19,10 @@ return array(
     'JMS\\SerializerBundle' => array($vendorDir . '/jms/serializer-bundle'),
     'JMS\\Serializer' => array($vendorDir . '/jms/serializer/src'),
     'JMS\\' => array($vendorDir . '/jms/parser-lib/src'),
+    'Guzzle\\Stream' => array($vendorDir . '/guzzle/stream'),
+    'Guzzle\\Parser' => array($vendorDir . '/guzzle/parser'),
+    'Guzzle\\Http' => array($vendorDir . '/guzzle/http'),
+    'Guzzle\\Common' => array($vendorDir . '/guzzle/common'),
     'FOS\\RestBundle' => array($vendorDir . '/friendsofsymfony/rest-bundle'),
     'Evenement' => array($vendorDir . '/evenement/evenement/src'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
@@ -31,5 +35,6 @@ return array(
     'Broadway\\UuidGenerator\\' => array($vendorDir . '/broadway/uuid-generator/src'),
     'Broadway\\' => array($vendorDir . '/broadway/broadway/src'),
     'Bazinga\\Bundle\\FakerBundle' => array($vendorDir . '/willdurand/faker-bundle'),
+    'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
     'Assert' => array($vendorDir . '/beberlei/assert/lib'),
 );
