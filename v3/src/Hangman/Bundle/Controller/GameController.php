@@ -68,11 +68,11 @@ class GameController extends FOSRestController
     /**
      * @param string $uuid
      */
-    public function getGameDetailAction($uuid) {
+    public function getGameAction($uuid) {
         Assertion::uuid($uuid);
         $game = $this->readModelRepository->find($uuid);
 
-        return new JsonResponse($game, 200);
+        return new JsonResponse([], 200);
     }
 
 
