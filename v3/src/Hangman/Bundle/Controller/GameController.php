@@ -71,9 +71,8 @@ class GameController extends FOSRestController
     public function getGameDetailAction($uuid) {
         Assertion::uuid($uuid);
         $game = $this->readModelRepository->find($uuid);
-        var_dump($game);
 
-        return new JsonResponse(["succeed"], 201);
+        return new JsonResponse($game, 200);
     }
 
 
@@ -138,6 +137,7 @@ class GameController extends FOSRestController
         }
 
         $response = [
+            "uuid" => $game->getGameId(),
             "good_guesses" => $game->getLetterCorrectlyGuessed(),
             "wrong_guesses" => $game->getLetterWrongGuessed(),
             "message" => $game->getGameStatus()
@@ -145,12 +145,14 @@ class GameController extends FOSRestController
 
         if ($game->getGameWon()) {
             $response = [
+                "uuid" => $game->getGameId(),
                 "statusCode" => 1,
                 "message" => $game->getGameStatus()
             ];
         }
         else if ($game->getGameLost()) {
             $response = [
+                "uuid" => $game->getGameId(),
                 "statusCode" => 2,
                 "message" => $game->getGameStatus()
             ];
@@ -180,6 +182,22 @@ class GameController extends FOSRestController
             200
         );
 
+    }
+
+    /**
+     * @param $uuid
+     * @return JsonResponse
+     */
+    public function getGameStateAction($uuid)
+    {
+        Assertion::uuid($uuid);
+
+        $game = $this->readModelRepository->find($uuid);
+
+        return new JsonResponse([
+                "uuid" => $uuid,
+                "message" => $game->getGameStatus()
+        ]);
     }
 
     /**

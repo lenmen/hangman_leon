@@ -3,4 +3,5 @@
 /app/cache/
 /app/logs/
 /.idea/
-
+/.composer/
+/.idea/
